@@ -60,13 +60,11 @@ class Song
   end
 
   def self.create_from_filename(file)
-    title = file.sub(".mp3","").split(" - ").last
-    artist = file.sub(".mp3","").split(" - ").first
-    song = Song.new
-    song.name = title
-    song.artist_name = artist
-    song.save
-    song
+    new_from_filename(file).save
+  end
+
+  def self.destroy_all
+    self.all.clear
   end
 
 end
