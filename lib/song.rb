@@ -45,7 +45,7 @@ class Song
 
   def self.new_from_filename(filename)
     data = filename.split(" - ")
-    name = data[1][0..data[1].length-5]
+    name = data[1][0..data[1].length-5] ##range used to slice off file extension
     artist = data[0]
     song = self.create_by_name(name)
     song.artist_name = artist
