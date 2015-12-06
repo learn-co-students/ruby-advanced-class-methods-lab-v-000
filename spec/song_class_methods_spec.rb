@@ -4,7 +4,7 @@ require 'pry'
 describe "Song Class Methods" do
   describe '.create' do
     it 'instantiates and saves the song' do
-      song = Song.create
+      song = Song.create("name")
 
       expect(Song.all).to include(song)
     end
