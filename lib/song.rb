@@ -1,9 +1,9 @@
 class Song
   attr_accessor :name, :artist_name
-  @@all = []
+  @@allsongs = []
 
   def self.all
-    @@all
+    @@allsongs
   end
 
   def save
