@@ -33,7 +33,7 @@ class Song
   	self.all.detect { |x| x.name == find }
   end
   
-  def find_or_create_by_name(find)
+  def self.find_or_create_by_name(find)
   	if self.all.detect { |x| x.name == find }.nil?
   		song = self.new
   		song.name = find
@@ -52,8 +52,19 @@ class Song
   	song=self.new
   	song.name=file.scan(/(?<=\-)[\w\s]*(?=\.)/)[0].strip
   	song.artist_name=file.scan(/\A[\w\s]*(?=\-)/)[0].strip
+  	song
+  end
+  
+  def self.new_from_filename(file)
+  	song=self.new
+  	song.name=file.scan(/(?<=\-)[\w\s]*(?=\.)/)[0].strip
+  	song.artist_name=file.scan(/\A[\w\s]*(?=\-)/)[0].strip
   	song.save
   	song
+  end
+  
+  def self.destroy_all
+  	self.all.clear
   end
   
 end
