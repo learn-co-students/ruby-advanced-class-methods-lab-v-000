@@ -55,7 +55,7 @@ class Song
   	song
   end
   
-  def self.new_from_filename(file)
+  def self.create_from_filename(file)
   	song=self.new
   	song.name=file.scan(/(?<=\-)[\w\s]*(?=\.)/)[0].strip
   	song.artist_name=file.scan(/\A[\w\s]*(?=\-)/)[0].strip
