@@ -65,8 +65,8 @@ describe "Song Class Methods" do
       expect(song.artist_name).to eq("Thundercat")
     end
   end
-
   describe '.create_from_filename' do
+
     it 'initializes and saves a song and artist_name based on the filename format' do
       song = Song.create_from_filename("Thundercat - For Love I Come.mp3")
       song_match = Song.find_by_name("For Love I Come")
