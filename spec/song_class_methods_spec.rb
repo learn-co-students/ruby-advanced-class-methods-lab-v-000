@@ -7,13 +7,12 @@ describe "Song Class Methods" do
       song = Song.create
       expect(song).to be_a(Song)
       expect(Song.all).to include(song)
-    end
+      end
   end
 
   describe '.new_by_name' do
     it 'instantiates a song with a name property' do
       song = Song.new_by_name("Blank Spaces")
-
       expect(song.name).to eq("Blank Spaces")
     end
   end
@@ -60,7 +59,6 @@ describe "Song Class Methods" do
   describe '.new_from_filename' do
     it 'initializes a song and artist_name based on the filename format' do
       song = Song.new_from_filename("Thundercat - For Love I Come.mp3")
-
       expect(song.name).to eq("For Love I Come")
       expect(song.artist_name).to eq("Thundercat")
     end
@@ -69,6 +67,7 @@ describe "Song Class Methods" do
   describe '.create_from_filename' do
     it 'initializes and saves a song and artist_name based on the filename format' do
       song = Song.create_from_filename("Thundercat - For Love I Come.mp3")
+
       song_match = Song.find_by_name("For Love I Come")
       expect(song_match.name).to eq("For Love I Come")
       expect(song_match.artist_name).to eq("Thundercat")
