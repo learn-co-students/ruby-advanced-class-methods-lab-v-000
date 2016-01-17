@@ -12,7 +12,7 @@ class Song
 
   def self.create
     song = Song.new
-    song.save
+    self.all << song
     song
   end
 
@@ -25,51 +25,44 @@ class Song
   def self.create_by_name(name)
     song = Song.new
     song.name = name
-    song.save
+    self.all << song
     song
   end
 
   def self.find_by_name(name)
-    self.all.detect {|title| title.name == name}
+    self.all.detect {|song| song.name == name}
   end
 
   def self.find_or_create_by_name(name)
-    if self.all.include?(name)
-      self.all.find_by_name(name)
+    if self.find_by_name(name)
+      self.find_by_name(name)
     else
-      self.new_by_name(name)
+      self.create_by_name(name)
     end
   end
 
   def self.alphabetical
-    self.all.sort_by{|x|x.name}
+    self.all.sort_by {|w| w.name}
   end
 
   def self.new_from_filename(filename)
-    artist_name = filename.split(" - ")[0]
-    song_with_ext = filename.split(" - ")[1]
-    name = song_with_ext.split(".")[0]
     song = Song.new
-    song.name = name
-    song.artist_name = artist_name
+    song.artist_name = filename.split(" - ")[0]
+    songnamefull = filename.split(" - ")[1]
+    song.name = songnamefull.split(".")[0]
     song
   end
 
   def self.create_from_filename(filename)
-     artist_name = filename.split(" - ")[0]
-    song_with_ext = filename.split(" - ")[1]
-    name = song_with_ext.split(".")[0]
     song = Song.new
-    song.name = name
-    song.artist_name = artist_name
-    song.save
+    song.artist_name = filename.split(" - ")[0]
+    songnamefull = filename.split(" - ")[1]
+    song.name = songnamefull.split(".")[0]
+    self.all << song
     song
   end
 
   def self.destroy_all
     self.all.clear
   end
-
-
 end
-
