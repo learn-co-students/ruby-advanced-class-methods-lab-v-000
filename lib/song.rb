@@ -31,7 +31,9 @@ class Song
   end
 
   def self.find_by_name(name)
-    @@all.detect {|song| song.name == name}
+    #@@all.detect {|song| song.name == name}
+    #should really refactor to the following so the code doesn't break just in case the class variable name is modified:
+    self.all.detect {|song| song.name == name}
   end
 
   def self.find_or_create_by_name(name)
@@ -63,6 +65,8 @@ class Song
   end
 
   def self.destroy_all
-    @@all.clear
+    #@@all.clear
+    #should really refactor to the following so the code doesn't break just in case the class variable name is modified:
+    self.all.clear
   end
 end
