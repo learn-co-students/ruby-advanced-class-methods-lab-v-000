@@ -4,14 +4,6 @@ class Song
   attr_accessor :name, :artist_name
   @@all = []
 
-  #def name=(name)
-    #@name = name
-  #end
-
-  #def name
-    #@name
-  #end
-
   def self.all
     @@all
   end
@@ -43,7 +35,7 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    #this means that I am calling the first method, .find_by_name(name), and if that doesn't return true, it will run the second method, .create_by_name(name) and vice versa
+    #this means that I am calling the first method, .find_by_name(name) on the instance object of this method (aka self), and if that doesn't return true, it will run the second method, .create_by_name(name) and vice versa
 
     self.find_by_name(name) || self.create_by_name(name)
   end
@@ -54,13 +46,13 @@ class Song
 
   def self.new_from_filename(file)
     info = file.split(" - ")
-  
-    artist_name = info[0]
-    name = info[1].split(".")[0]
+    #can also use regex like so:
+    #info = file.split(/\s-\s|\./)
 
     song = Song.new
-    song.artist_name = artist_name
-    song.name = name
+    song.artist_name = info[0]
+    song.name = info[1].split(".")[0]
+    #can also do a[1].slice!(".mp3")
     song
   end
 
