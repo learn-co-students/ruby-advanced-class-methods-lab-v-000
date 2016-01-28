@@ -53,6 +53,7 @@ class Song
     newer_filename = new_filename.split(" - ")
     artist_name = newer_filename[0]
     new_name = newer_filename[1]
+    
     song = self.new
     song.artist_name = artist_name
     song.name = new_name
@@ -64,6 +65,7 @@ class Song
     newer_filename = new_filename.split(" - ")
     artist_name = newer_filename[0]
     new_name = newer_filename[1]
+   
     song = self.new
     song.artist_name = artist_name
     song.name = new_name
