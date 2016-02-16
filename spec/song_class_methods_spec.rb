@@ -13,7 +13,6 @@ describe "Song Class Methods" do
   describe '.new_by_name' do
     it 'instantiates a song with a name property' do
       song = Song.new_by_name("Blank Spaces")
-
       expect(song.name).to eq("Blank Spaces")
     end
   end
