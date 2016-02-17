@@ -1,6 +1,6 @@
 
 class Song
-  attr_accessor :name, :artist_name
+  attr_accessor( :name, :artist_name)
   @@all = []
 
   def self.create
@@ -26,7 +26,8 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-      self.create_by_name(name) if self.find_by_name(name) != false
+      self.create_by_name(name) #SO
+      self.find_by_name(name) 
   end
 
   def self.alphabetical
@@ -34,15 +35,15 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    result = filename.split(/\-|[.]/)
-    song = Song.new
+    song = self.create
+    result = filename.split(/ \- |[.]/)
     song.name = result[1]
     song.artist_name = result[0]
+    song
   end
 
-  def self.create_by_filename(filename)
-    result = filename.join(/ \- |[.]/)
-    self.name = result[1]
+  def self.create_from_filename(filename)
+    self.new_from_filename(filename)
   end
 
   def self.destroy_all
