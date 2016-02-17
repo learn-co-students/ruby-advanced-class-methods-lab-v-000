@@ -52,6 +52,13 @@ class Song
   end
 
   def self.create_from_filename(file)
+    file = file.split(" - ").join(".")
+    file = file.split(".")
+    name = file[1].to_s
+    artist_name = file[0].to_s
+    new_song = self.find_or_create_by_name(name)
+    new_song.artist_name = artist_name
+    @@all << new_song
   end
 
   def self.destroy_all
