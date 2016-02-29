@@ -9,13 +9,18 @@ class Song
   end
 
   def self.create
-    song = self.new
-    Song.name = name
-    @@all << name
+    #Song.name = name
+    #@name = name
+    #@@all << name
+    song = Song.new
+    if Song.all.include?(song)
+      @@all << song
+      song
+    end
   end
 
   def self.new_by_name(name)
-    Song.name = name
+    song = Song.new
   end
 
   def self.create_by_name(name)
@@ -35,7 +40,20 @@ class Song
     #also works: self.all.sort_by {|song| song.name}
   end
 
-  def self.new_from_filename(filename)
+  def self.new_from_filename(filename) #custom constructor
+    fields_and_sizes = [[:name, 30], [:artist_name, 30]]
+    tag = {}
+
+    open(filename) do |f|
+      f.seek(-128, File::SEEK_END)
+      if f.read(3) == 'TAG'
+        fields_and_sizes.each do |field, size|
+          #data = f.read(size).gsub(/\000.*/, "")
+          tag[field] = data
+          end
+        end
+      tag
+      end
   end
 
   def self.destroy_all
