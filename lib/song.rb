@@ -27,7 +27,6 @@ class Song
     song
   end
 
-
   def self.find_by_name(name)
     @@all.detect{|song| song.name == name}
   end
@@ -51,7 +50,6 @@ class Song
   end
 
   def self.create_from_filename(filename)
-    #self.new_from_filename(filename)
     file = filename.split(" - ")
     name = file[1].sub(".mp3", "")
     artist_name = file[0]
