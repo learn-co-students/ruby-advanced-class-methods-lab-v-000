@@ -9,51 +9,57 @@ class Song
   end
 
   def self.create
-    #Song.name = name
-    #@name = name
-    #@@all << name
     song = Song.new
-    if Song.all.include?(song)
-      @@all << song
-      song
-    end
+    @@all << song
+    song
   end
 
   def self.new_by_name(name)
     song = Song.new
+    song.name = name
+    song
   end
 
   def self.create_by_name(name)
-    #@@all << self.new
+    song = self.new
+    song.name = name
+    self.all << song
+    song
   end
 
 
   def self.find_by_name(name)
-    @@all.detect{|song| @@all.song == song}
+    @@all.detect{|song| song.name == name}
   end
 
-  def find_or_create_by_name(name)
+  def self.find_or_create_by_name(name)
+    self.find_by_name(name)|| self.create_by_name(name)
   end
 
   def self.alphabetical
-    @@all.sort_by(&:downcase)
-    #also works: self.all.sort_by {|song| song.name}
+    self.all.sort_by {|song| song.name}
   end
 
   def self.new_from_filename(filename) #custom constructor
-    fields_and_sizes = [[:name, 30], [:artist_name, 30]]
-    tag = {}
+    file = filename.split(" - ")
+    name = file[1].sub(".mp3", "")
+    artist_name = file[0]
+    song = Song.new
+    song.name = name
+    song.artist_name = artist_name
+    song
+  end
 
-    open(filename) do |f|
-      f.seek(-128, File::SEEK_END)
-      if f.read(3) == 'TAG'
-        fields_and_sizes.each do |field, size|
-          #data = f.read(size).gsub(/\000.*/, "")
-          tag[field] = data
-          end
-        end
-      tag
-      end
+  def self.create_from_filename(filename)
+    #self.new_from_filename(filename)
+    file = filename.split(" - ")
+    name = file[1].sub(".mp3", "")
+    artist_name = file[0]
+    song = Song.new
+    song.name = name
+    song.artist_name = artist_name
+    song.save
+    song
   end
 
   def self.destroy_all
