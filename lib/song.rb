@@ -22,8 +22,18 @@ class Song
     song
   end
 
-  def self.create_from_file_name(file_name)
-    self.from_file_name(file_name)
+  def self.create_from_filename(filename)
+    array = filename.split(" - ")
+    artist = array[0]
+    song_name = array[1].split(".")[0]
+    song=self.new
+    song.name = song_name
+    song.artist_name = artist
+
+
+    song.save
+
+    
   end
 
   def self.find_by_name(name)
@@ -41,22 +51,34 @@ class Song
   def save
     self.class.all << self
   end
-  def self.new_from_filename(name)
-    artist = ""
-    song = ""
-    data = filename.scan(/(.+)\s\-\s(.+)\.mp3/)
-    artist = data[0][0]
-    song = data[0][1]
-    self.create(song,artist)
+  
+  def self.new_from_filename(filename)
+  array = filename.split(" - ")
+  artist = array[0]
+  song_name = array[1].split(".")[0]
+  song=self.new
+  song.name = song_name
+  song.artist_name = artist
+  song
+
     
   end
    def self.find_or_create_by_name(name)
-    song = self.find_or_create_by_name(name)
-    song = self.create_by_name(name)
-   end
+  
+    if @@all.include?(name)
+       @@all.find? do |song|
+         song.name==name
+       end
+    else
+      song=self.new
+      song.name = name
+      @@all << self
+      song
+      end
+    end
 
   def self.destroy_all
     self.all.clear
-  end
-
+   end
 end
+
