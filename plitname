@@ -1,0 +1,13 @@
+
+[1mFrom:[0m /home/nitrous/code/labs/ruby-advanced-class-methods-lab-v-000/lib/song.rb @ line 58 Song.new_from_filename:
+
+    [1;34m51[0m: [32mdef[0m [1;36mself[0m.[1;34mnew_from_filename[0m(name)
+    [1;34m52[0m:   song = [1;36mself[0m.new
+    [1;34m53[0m:   splitname = name.split([31m[1;31m"[0m[31m - [1;31m"[0m[31m[0m)
+    [1;34m54[0m:   song.name = splitname[[1;34m0[0m]
+    [1;34m55[0m:   a = splitname[[1;34m1[0m]
+    [1;34m56[0m:   a.slice! [31m[1;31m"[0m[31m.mp3[1;31m"[0m[31m[0m
+    [1;34m57[0m:   song.artist_name = a
+ => [1;34m58[0m:   binding.pry
+    [1;34m59[0m: [32mend[0m
+
