@@ -10,16 +10,32 @@ class Song
     @@all
   end
 
+  def self.destroy_all
+      self.all.clear
+  end
+
+
+    def self.create_from_filename(song)
+             values = song.split(" - ")
+            artist = values[0]
+            song = values[1].chomp(".mp3")
+
+            new_instance = Song.new
+            new_instance.artist_name=(artist)
+            new_instance.name=(song)
+            new_instance.save
+
+    end
  def self.new_from_filename(song)
             values = song.split(" - ")
             artist = values[0]
             song = values[1].chomp(".mp3")
-            
+
             new_instance = Song.new
             new_instance.artist_name=(artist)
-            new_instance.name=(song) 
-            
-            #self.create_by_name(song) 
+            new_instance.name=(song)
+
+            #self.create_by_name(song)
             new_instance
         end
   def save
