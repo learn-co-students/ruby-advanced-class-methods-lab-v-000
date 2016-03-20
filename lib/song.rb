@@ -52,19 +52,16 @@ class Song
   end
 
   def self.new_from_filename(filename)
- ###song = Song.new_from_filename("Thundercat - For Love I Come.mp3")
     filename_array = filename.split(".").delete_at(0).split(" - ")
     song = self.new
     song.name = filename_array[1]
     song.artist_name = filename_array[0]
-
-song
-
- binding.pry
+    song
   end
 
-  def self.create_from_filename
-
+  def self.create_from_filename(filename)
+    song = Song.new_from_filename(filename)
+    @@all << song
   end
 
   def self.destroy_all
