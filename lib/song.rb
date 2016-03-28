@@ -65,12 +65,7 @@ class Song
   end
 
   def self.destroy_all
-    @@all = []
-
-    # When the first line in this method is replaced by the following two
-    # lines, the #alphabetical spec breaks.  I don't know why?
-    # temp = self.all
-    # temp = []
+    self.all.clear
   end
 
 end
