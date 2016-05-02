@@ -50,17 +50,22 @@ class Song
 
 
    def self.new_from_filename(filename)
-    binding.pry
+    data = filename.chomp!(".mp3").split(" - ")
     song = self.new
-    chomped_filename = filename.chomp!(".mp3")
-    song = chomped_filename.split("-")
-    song.artist_name = song[0]
-    song.name = song[1]
+    song.artist_name = data[0]
+    song.name = data[1]
     song 
+   end
+
+   def self.create_from_filename(filename)
+    @@all << self.new_from_filename(filename)
    end
 
 
 
+   def self.destroy_all
+    @@all.clear
+  end
 
 
   def save
