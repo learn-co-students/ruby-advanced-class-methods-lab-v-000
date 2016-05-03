@@ -71,10 +71,10 @@ class Song
     artist_name = track_info[0]
     name = track_info[1]
 
-    song = self.new
+    song = self.create
     song.name = name
     song.artist_name = artist_name
-    self.all << song
+    song
   end
 
   def self.destroy_all
