@@ -1,5 +1,6 @@
 require "pry"
 class Song
+  
   attr_accessor :name, :artist_name
   @@all = []
 
@@ -25,17 +26,11 @@ class Song
     song
   end
 
-  def self.create_by_name(name)
-    song = self.new
-    song.name = name
+  def self.create_by_name(name) 
+    song = Song.new_by_name(name)
     @@all << song
     song
   end
-
- # def self.create_by_name(name) 
- #   song = self.new_by_name(name)
- #   @@all << song
- # end
 
   def self.find_by_name(name)
     @@all.find {|song| 
@@ -53,8 +48,8 @@ class Song
     @@all.sort_by {|song| song.name}
   end
 
-  def self.new_from_filename(filename) #"Taylor Swift - Blank Space.mp3"
-    parts = filename.split(" - ") #=>["Taylor Swift", "Blank Space.mp3"] 
+  def self.new_from_filename(filename) #=> "Taylor Swift - Blank Space.mp3"
+    parts = filename.split(" - ") #=> ["Taylor Swift", "Blank Space.mp3"] 
     artist_name = parts[0]
     parts_2 = filename.split(" - ")[1].split(".")
     song_name = parts_2[0]
@@ -70,10 +65,8 @@ class Song
   end
 
   def self.destroy_all
-   @@all.each {|song| song = nil}
+   @@all = []
   end
-
-
 
 end
 
