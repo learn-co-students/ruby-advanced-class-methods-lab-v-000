@@ -32,6 +32,11 @@ class Song
     song
   end
 
+ # def self.create_by_name(name) 
+ #   song = self.new_by_name(name)
+ #   @@all << song
+ # end
+
   def self.find_by_name(name)
     @@all.find {|song| 
       if song.name == name
@@ -39,29 +44,21 @@ class Song
       end}
   end
 
-   def self.find_or_create_by_name(name)
-    if 
-      self.find_by_name(name) == nil 
+  def self.find_or_create_by_name(name) 
+      self.find_by_name(name) ||
       self.create_by_name(name)
-    end
   end
 
- # def self.find_or_create_by_name(name)
- #   if 
- #     @@all.find {|song| 
- #     if song.name == name
- #       song
- #     end} == nil 
- #     song = self.new
- #     song.name = name
- #     @@all << song
- #   end
- #   song
- # end
-
  def self.alphabetical
-  @@all.sort_by {|song| song.alphabetical}
+  @@all.sort_by do |song| puts song
+  end 
+end
+#binding.pry
 
+def self.new_from_filename(artist_with_song) #"Taylor Swift - Blank Space.mp3"
+  artist_with_song.split("-")
+  
+end
 
 
 
