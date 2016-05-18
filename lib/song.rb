@@ -50,16 +50,20 @@ class Song
   end
 
  def self.alphabetical
-  @@all.sort_by do |song| puts song
-  end 
+  @@all.sort_by {|song| song.name}
 end
 #binding.pry
 
-def self.new_from_filename(artist_with_song) #"Taylor Swift - Blank Space.mp3"
-  artist_with_song.split("-")
-  
+def self.new_from_filename(filename) #"Taylor Swift - Blank Space.mp3"
+  filename.split(" - ") #=>["Taylor Swift", "Blank Space.mp3"] 
+  filename.split(" - ")[0] = artist_name
+  @artist_name = artist_name
+  filename.split(" - ")[1].split(".")[0] = song_name
+  @name = song_name
+  binding.pry
 end
 
+def self.create_from_filename(filename)
 
 
 end
