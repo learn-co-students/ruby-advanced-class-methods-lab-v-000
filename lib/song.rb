@@ -56,10 +56,14 @@ end
 def self.new_from_filename(filename) #"Taylor Swift - Blank Space.mp3"
   parts = filename.split(" - ") #=>["Taylor Swift", "Blank Space.mp3"] 
   artist_name = parts[0]
-  @artist_name = artist_name
+  #@artist_name = artist_name
   parts_2 = filename.split(" - ")[1].split(".")
   song_name = parts_2[0]
-  @name = song_name
+  #@name = song_name
+
+  new_song = Song.create
+  new_song.artist_name = artist_name
+  new_song.name = song_name
 end
 
 #def self.create_from_filename(filename)
