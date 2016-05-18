@@ -45,35 +45,33 @@ class Song
   end
 
   def self.find_or_create_by_name(name) 
-      self.find_by_name(name) ||
-      self.create_by_name(name)
+    self.find_by_name(name) ||
+    self.create_by_name(name)
   end
 
- def self.alphabetical
-  @@all.sort_by {|song| song.name}
-end
+  def self.alphabetical
+    @@all.sort_by {|song| song.name}
+  end
 
-def self.new_from_filename(filename) #"Taylor Swift - Blank Space.mp3"
-  parts = filename.split(" - ") #=>["Taylor Swift", "Blank Space.mp3"] 
-  artist_name = parts[0]
-  #@artist_name = artist_name
-  parts_2 = filename.split(" - ")[1].split(".")
-  song_name = parts_2[0]
-  #@name = song_name
+  def self.new_from_filename(filename) #"Taylor Swift - Blank Space.mp3"
+    parts = filename.split(" - ") #=>["Taylor Swift", "Blank Space.mp3"] 
+    artist_name = parts[0]
+    parts_2 = filename.split(" - ")[1].split(".")
+    song_name = parts_2[0]
 
-  new_song = Song.create
-  new_song.artist_name = artist_name
-  new_song.name = song_name
-end
+    new_song = Song.create
+    new_song.artist_name = artist_name
+    new_song.name = song_name
+    new_song
+  end
 
-#def self.create_from_filename(filename)
- # @@all << self.new_from_filename(filename)
-#end
+  def self.create_from_filename(filename)
+    @@all << self.new_from_filename(filename)
+  end
 
-#def self.destroy_all
- #@@all.each do |song| song.remove
- # end
-#end
+  def self.destroy_all
+   @@all.each {|song| song = nil}
+  end
 
 
 
