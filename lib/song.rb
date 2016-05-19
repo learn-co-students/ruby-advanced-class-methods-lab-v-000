@@ -48,13 +48,13 @@ class Song
   def self.new_from_filename(filename)
     file_info = filename[0..-5].split(" - ") # parse the .mp3 away, split on and remove the " - "
     song = self.new
-    
     song.artist_name = file_info[0]
     song.name = file_info[1]
-     
+    song
   end
 
   def self.create_from_filename(filename)
+    self.all << new_from_filename(filename)
   end
 
   def self.destroy_all
