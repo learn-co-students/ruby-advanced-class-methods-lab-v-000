@@ -55,7 +55,7 @@ class Song
  
     @name = self.new(songtitle)
     @artist_name = artist
-    
+
     binding.pry
   end
 
