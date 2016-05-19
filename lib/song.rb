@@ -46,19 +46,31 @@ class Song
     self.all.sort_by {|song| song.name}
   end
 
+  # def self.file_name_normalize(file_name)
+  #   newarray = file_name.split(/(\s-\s)/)
+  #   newarray.delete_at(1)
+  #   slicelength = newarray[1].index(".mp3")
+  #   newarray[1] =newarray[1].slice(0,slicelength.to_i)
+  #   newarray
+  #   binding.pry
+  # end
+  # songtitle = self.file_name_normalize(file_name)[1]
+  #   artist = self.file_name_normalize(file_name)[0]
+
   def self.new_from_filename(file_name)
     newarray = file_name.split(/(\s-\s)/)
     newarray.delete_at(1)
     slicelength = newarray[1].index(".mp3")
     songtitle = newarray[1].slice(0,slicelength.to_i)
     artist = newarray[0]
- 
-    @name = self.new(songtitle)
-    @artist_name = artist
+    
+    song = self.new(songtitle)
+    
+    song.artist_name = artist
 
-    binding.pry
+    song
+    #binding.pry
   end
-
-end
+end #of class Song
 
 
