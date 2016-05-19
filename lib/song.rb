@@ -1,3 +1,5 @@
+require 'pry'
+
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -29,8 +31,34 @@ class Song
   end
 
   def self.find_by_name(name)
-    idx = self.all.index(name)
-    self.all[idx]
+    self.all.each do |song|
+      if song.name == name 
+         return song
+        end
+    end
+  end
+
+  def self.find_or_create_by_name(name)
+    self.find_by_name(name) == [] ? self.create_by_name(name) : self.find_by_name(name)
+  end
+
+  def self.alphabetical
+    self.all.sort_by {|song| song.name}
+  end
+
+  def self.new_from_filename(file_name)
+    newarray = file_name.split(/(\s-\s)/)
+    newarray.delete_at(1)
+    slicelength = newarray[1].index(".mp3")
+    songtitle = newarray[1].slice(0,slicelength.to_i)
+    artist = newarray[0]
+ 
+    @name = self.new(songtitle)
+    @artist_name = artist
+    
+    binding.pry
   end
 
 end
+
+
