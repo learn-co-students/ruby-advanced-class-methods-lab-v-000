@@ -63,13 +63,19 @@ class Song
     slicelength = newarray[1].index(".mp3")
     songtitle = newarray[1].slice(0,slicelength.to_i)
     artist = newarray[0]
-    
+  
     song = self.new(songtitle)
-    
     song.artist_name = artist
-
     song
-    #binding.pry
+  end
+
+  def self.create_from_filename(file_name)
+    newsong = self.new_from_filename(file_name)
+    self.all << newsong
+  end
+
+  def self.destroy_all
+    self.all.clear
   end
 end #of class Song
 
