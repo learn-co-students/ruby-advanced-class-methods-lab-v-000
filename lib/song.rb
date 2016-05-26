@@ -11,7 +11,7 @@ class Song
   end
 
   def self.create
-    song = Song.new
+    song = self.new
     song.save
     song
   end
@@ -43,6 +43,40 @@ class Song
     end
   end
 
+  def self.alphabetical
+    self.all.sort_by { |word| word.name }
+  end
+
+  def self.new_from_filename(file_name)
+    split_for_dot = file_name.split(".")
+    bit_we_want = split_for_dot[0]
+    split_artist_and_song = bit_we_want.split(" - ")
+    artist = split_artist_and_song[0]
+    song_name = split_artist_and_song[1]
+
+    song = self.new
+    song.name = song_name
+    song.artist_name = artist
+    song
+
+  end
+
+  def self.create_from_filename(file_name)
+    split_for_dot = file_name.split(".")
+    bit_we_want = split_for_dot[0]
+    split_artist_and_song = bit_we_want.split(" - ")
+    artist = split_artist_and_song[0]
+    song_name = split_artist_and_song[1]
+
+    song = self.new
+    song.name = song_name
+    song.artist_name = artist
+    song.save
+  end
+
+  def self.destroy_all
+    self.all.clear
+  end
 
 end
 
