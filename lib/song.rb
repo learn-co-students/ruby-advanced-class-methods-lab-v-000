@@ -51,11 +51,21 @@ class Song
 
   def self.new_from_filename(filename)
     song = self.new
-    filename_parse = filename.split(" - ")
+    filename_chomp = filename.chomp(".mp3")
+    filename_parse = filename_chomp.split(" - ")
     song.artist_name = filename_parse[0]
-    name_and_type = filename_parse[1]
-    name_parse = name_and_type.split("\.")
-    song.name = name_parse[0]
+    song.name = filename_parse[1]
+    song
+  end
+
+
+  def self.create_from_filename(filename)
+    song = self.new
+    filename_chomp = filename.chomp(".mp3")
+    filename_parse = filename_chomp.split(" - ")
+    song.artist_name = filename_parse[0]
+    song.name = filename_parse[1]
+    @@all << song
   end
 
 
