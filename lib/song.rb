@@ -86,7 +86,7 @@ class Song
     song.name = name[0]
 
     self.all << song
-    binding.pry
+    
   end
 
   def self.destroy_all
