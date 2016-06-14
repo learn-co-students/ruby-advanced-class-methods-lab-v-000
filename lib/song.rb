@@ -41,6 +41,15 @@ class Song
   end
 
   def self.alphabetical
-    @all.sort_by { |name| self.name }
+    self.all.sort_by { |song| song.name}
+    # binding.pry
   end
+
+  def self.new_from_filename(name_song)
+    song = self.create
+   	file_arr = name_song.to_s.split(/[-.]/)
+   	song.name = file_arr[0]
+ 	  song.artist_name = file_arr[1]
+  end
+  # binding.pry
 end
