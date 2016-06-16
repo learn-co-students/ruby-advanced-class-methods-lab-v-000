@@ -90,9 +90,9 @@ class Song
     @@all << song
     song
   end
-#=begin
+
   def self.destroy_all
-    #@@all.clear
+    @@all.clear
   end
-#=end
+
 end
