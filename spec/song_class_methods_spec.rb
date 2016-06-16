@@ -46,7 +46,7 @@ describe "Song Class Methods" do
       expect(song_1.name).to eq(song_2.name)
     end
   end
-
+#=begin
   describe '.alphabetical' do
     it 'returns all the song instances in alphabetical order by song name' do
       song_1 = Song.create_by_name("Thriller")
@@ -56,7 +56,7 @@ describe "Song Class Methods" do
       expect(Song.alphabetical).to eq([song_2, song_3, song_1])
     end
   end
-
+#=end
   describe '.new_from_filename' do
     it 'initializes a song and artist_name based on the filename format' do
       song = Song.new_from_filename("Thundercat - For Love I Come.mp3")
