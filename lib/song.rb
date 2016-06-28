@@ -10,4 +10,54 @@ class Song
     self.class.all << self
   end
 
+  def self.create
+    song = Song.new
+    song.save
+    song
+  end
+
+  def self.new_by_name(song_name)
+    song = self.new
+    song.name = song_name
+    song
+  end
+
+  def self.create_by_name(song_name)
+    song = self.new
+    song.name = song_name
+    song.save
+    song
+  end
+
+  def self.find_by_name(song_name)
+    self.all.detect {|song| song.name == song_name}
+  end
+
+  def self.find_or_create_by_name(song_name)
+    song = self.new
+    if self.all.detect {|song| song.name == song_name}
+      song
+    else
+      song.name = song_name
+      song.save
+      song
+    end
+  end
+
+  def self.alphabetical
+    self.all.sort_by {|song| song.name}
+  end
+
+  def self.new_from_filename
+
+  end
+
+  def self.create_from_filename
+
+  end
+
+  def self.destroy_all
+
+  end
+
 end
