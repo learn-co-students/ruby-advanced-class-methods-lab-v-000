@@ -42,7 +42,7 @@ class Song
   end
 
   def self.alphabetical
-    Song.all.sort_by!{|song| song.name}
+    self.all.sort_by!{|song| song.name}
   end
 
   def self.new_from_filename(filename)
@@ -51,7 +51,7 @@ class Song
     title = arr[-1].split(".")
     title.pop
     arr[-1] = title[0]
-    new_song = Song.new
+    new_song = self.new
     new_song.name = arr[1]
     new_song.artist_name = arr[0]
     new_song
