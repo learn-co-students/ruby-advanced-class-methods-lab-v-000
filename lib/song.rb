@@ -25,7 +25,6 @@ class Song
   end
 
   def self.create_by_name(name)
-    #binding.pry
     self.all.push(self.new_by_name(name))
     @@all.last
   end
@@ -35,8 +34,20 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
+    self.find_by_name(name) ? self.find_by_name(name) : self.create_by_name(name)
   end
 
+  def self.alphabetical
+    self.all.sort_by {|n| n.name}
+  end
+
+
+  def self.new_from_filename(artist_and_song_name)
+    song = self.new
+    song.name =artist_and_song_name.split("-")[1].split(".")[0].strip
+    song.artist_name =artist_and_song_name.split("-")[0].strip
+    song
+  end
 
 
 end
