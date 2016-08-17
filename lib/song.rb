@@ -48,16 +48,14 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    filename.delete!(".mp3")
-    file = filename.map do |filename|
-      info = filename.split("-")
-      artist_name = info[0]
-      name = info[1]
-      song = self.new
-      song.name= name
-      song.artist_name= artist_name
-      self.all << song
-      song
-    end
+    filename.delete ".mp3$"
+    info = filename.split("-")
+    artist_name = info[0]
+    name = info[1]
+    song = self.new
+    song.name= name
+    song.artist_name= artist_name
+    self.all << song
+    song
   end
 end
