@@ -2,6 +2,7 @@ require 'pry'
 
 class Song
   attr_accessor :name, :artist_name
+
   @@all = []
 
   def self.all
@@ -43,23 +44,22 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    segments = filename.split("-")
-    artist_name = filename[0]
-    @name= filename[1].gsub(".mp3", "")
-
     song = self.new
+    artist_name = filename.split("-")[0]
+    name= filename.split("-")[1].gsub(".mp3", "")
+
     song.artist_name = artist_name
-    song.name= @name
+    song.name = name
   end
 
   def self.create_from_filename(filename)
     segments = filename.split("-")
     artist_name = filename[0]
-    @name= filename[1].gsub(".mp3", "")
+    name= filename[1].gsub(".mp3", "")
 
     song = self.create
     song.artist_name = artist_name
-    song.name= @name
+    song.name= name
     song
   end
 
