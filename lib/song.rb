@@ -5,9 +5,13 @@ class Song
 
   @@all = []
 
+  def self.save
+    self.class.all << self
+  end
+
   def self.create
     @song = Song.new
-    self.all << @song
+    @song.save
     @song
   end
 
