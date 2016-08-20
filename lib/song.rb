@@ -5,7 +5,7 @@ class Song
 
   @@all = []
 
-  def self.save
+  def save
     self.class.all << self
   end
 
@@ -16,13 +16,14 @@ class Song
   end
 
   def self.new_by_name(name)
-    @song = Song.create
+    @song = Song.new
     @song.name = name
     @song
   end
 
   def self.create_by_name(name)
-    @song = Song.new_by_name(name)
+    @song = Song.create(name)
+    @song.name = name
     @song
   end
 
@@ -35,7 +36,7 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    !find_by_name(name).nil? ? find_by_name(name) : create_by_name(name)
+    find_by_name(name) || create_by_name(name)
   end
 
   def self.alphabetical
