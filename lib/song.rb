@@ -58,9 +58,9 @@ class Song
     artist = song[0]
     song_name = song[1].gsub(/[.].*/,"")
 
-    @song = self.create_by_name(song_name)
-    @song.artist_name = artist
-    @song
+    song = self.create_by_name(song_name)
+    song.artist_name = artist
+    song
   end
 
   def self.destroy_all
