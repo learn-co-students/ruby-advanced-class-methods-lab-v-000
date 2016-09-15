@@ -38,7 +38,8 @@ class Song
     end
   end
 # another way of writing the above method is just by calling methods u have already written
-#  def self.find_by_name(name) || def self.create_by_name(name)
+#  def self.find_or_create_by_name(name)
+ # self.find_by_name(name) || self.create_by_name(name)
 # end
 
 
