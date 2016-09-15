@@ -37,6 +37,10 @@ class Song
         song
     end
   end
+# another way of writing the above method is just by calling methods u have already written
+#  def self.find_by_name(name) || def self.create_by_name(name)
+# end
+
 
   def self.alphabetical
     @@all.sort_by {|song_name| song_name.name}
@@ -63,8 +67,6 @@ class Song
     song.artist_name = artist_name.strip
     song.save
   end
-
-
 
 
   def self.destroy_all
