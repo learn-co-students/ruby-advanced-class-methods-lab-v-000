@@ -34,7 +34,8 @@ class Song
   end
 
   def self.alphabetical
-    @@all.sort_by! {|song| song.name}
+    self.all.sort_by! {|song| song.name}
+    # @@all.sort_by! {|song| song.name}
   end
 
   def self.new_from_filename(mp3_name)
@@ -54,7 +55,8 @@ class Song
   end
 
   def self.destroy_all
-    @@all.clear
+    self.all.clear
+    # @@all.clear
   end
 
 end
