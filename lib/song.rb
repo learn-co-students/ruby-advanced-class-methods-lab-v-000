@@ -12,19 +12,17 @@ class Song
 
 #will give a song with a name property
  def self.new_by_name(name)
-   song_name = self.new
-   song_name.name = name
-   @@all << song_name
-   song_name
+   song = self.new
+   song.name = name
+   song
  end
 
 #will save a song with a name property
  def self.create_by_name(name)
    song = self.new
-   song_name = self.new
-   song_name.name = name
-   @@all << song_name
-   song_name
+   song.name = name
+   @@all << song
+   song
  end
 
 #will find a song that exists in @@all by the name of it
@@ -48,7 +46,6 @@ class Song
 #will return all the song instances in alphabetical order by song name
   def self.alphabetical
     @@all.sort_by{|word| word.name}
-    #binding.pry
   end
 
 #will initialize a song and and artist name
@@ -67,17 +64,13 @@ class Song
     @@all << song
   end
 
-#will delete everything - OK
+#will delete everything
   def self.destroy_all
     @@all.clear
   end
 
   def self.all
     @@all
-  end
-
-  def save
-    self.class.all << self
   end
 
 end
