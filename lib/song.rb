@@ -53,16 +53,18 @@ class Song
 
 #will initialize a song and and artist name
   def self.new_from_filename( filename)
-    binding.pry
     song = self.new
-    song.name = filename.split("-")[0].strip
-    song.artist_name = filename.split("-")[1].split(".")[0].strip
-    #binding.pry
+    song.name = filename.split("-")[1].split(".")[0].strip
+    song.artist_name = filename.split("-")[0].strip
+    song
   end
 
 #will create and save a song and artist name based on a file format
-  def self.create_from_filename(name)
-
+  def self.create_from_filename(filename)
+    song = self.new
+    song.name = filename.split("-")[1].split(".")[0].strip
+    song.artist_name = filename.split("-")[0].strip
+    @@all << song
   end
 
 #will delete everything - OK
