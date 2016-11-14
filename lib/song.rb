@@ -60,4 +60,14 @@ def self.new_from_filename(str)
 
   song
 end
+
+def self.create_from_filename(str)
+  song = Song.new
+  str_array = str.split("-")
+    song.name = str_array[1].split(".")[0]
+    song.name.strip! # will strip white spaces from the song
+  song.artist_name = str_array[0].strip
+
+  @@all << song
+end
 end
