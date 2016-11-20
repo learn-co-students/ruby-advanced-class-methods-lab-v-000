@@ -45,6 +45,12 @@ describe "Song Class Methods" do
       expect(song_2).to be_a(Song)
       expect(song_1.name).to eq(song_2.name)
     end
+
+    it 'finds or creates a song by name, maintaining uniqueness of objects by name property' do
+      song_1 = Song.create_by_name("Blank Space2")
+      song_2 = Song.find_or_create_by_name("Blank Space2")
+      expect(song_1.name).to eq(song_2.name)
+    end
   end
 
   describe '.alphabetical' do
