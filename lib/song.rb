@@ -4,15 +4,6 @@ class Song
   @@songs = []          #Changed from @@all
 
 
-  def initialize(name, artist_name)
-    @name=name
-    @artist_name=artist_name
-    self.class.all << self       #Changed from @@all
-    song.create
-    song.name
-
-  end
-
   def self.all
     @@songs               #Changed from @@all
   end
