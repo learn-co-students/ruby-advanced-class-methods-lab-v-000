@@ -4,7 +4,7 @@ class Song
   @@songs = []          #Changed from @@all
 
 
-  def inialize(name, artist_name)
+  def initialize(name, artist_name)
     @name=name
     @artist_name=artist_name
     self.class.all << self       #Changed from @@all
