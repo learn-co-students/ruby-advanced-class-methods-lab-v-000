@@ -3,18 +3,17 @@ class Song
   attr_accessor :name, :artist_name
   @@songs = []          #Changed from @@all
 
-
   def self.all
     @@songs               #Changed from @@all
   end
 
-  def save
+  def save # a method that only operates on instances of Song; not on the Song class itself
     self.class.all << self
   end
 
   def self.create
     song = Song.new
-    @@songs << song       #Changed from @@all
+    song.save
     song
   end
 
@@ -25,9 +24,8 @@ class Song
   end
 
   def self.create_by_name(song_name)
-      song = Song.new         #creates the new song.
-      song.name = song_name   #gives it a name
-      @@songs << song           #song being saved into the @@all class variable. Changed from @@all
+      song = Song.new_by_name(song_name)
+      song.save      
       song                    #instance of Song
   end
 
