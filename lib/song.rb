@@ -35,9 +35,14 @@ class Song
     self.all.detect{|song| song.name == song_name}
   end
 
-  def self.find_or_create_by_name(song_name) #accept a string name for a song
-    if self.find_by_name(song_name)
-    else self.create_by_name(song_name)
+  def self.find_or_create_by_name(song_name)
+    self.find_by_name(song_name) || self.create_by_name(song_name)
   end
 
+  def self.alphabetical
+    @@songs.sort_by do |song|
+      #binding.pry
+      song.name
+    end
+  end
 end
