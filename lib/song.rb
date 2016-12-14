@@ -18,15 +18,15 @@ class Song
   end
 
   def self.new_by_name(song_name)
-      song = Song.new         #creates the new song.
-      song.name = song_name   #gives it a name
-      song                    #instance of Song
+    song = Song.new         #creates the new song.
+    song.name = song_name   #gives it a name
+    song                    #instance of Song
   end
 
   def self.create_by_name(song_name)
-      song = Song.new_by_name(song_name)
-      song.save      
-      song                    #instance of Song
+    song = Song.new_by_name(song_name)
+    song.save
+    song                    #instance of Song
   end
 
   def self.find_by_name(song_name)
@@ -39,8 +39,8 @@ class Song
 
   def self.alphabetical
     @@songs.sort_by do |song|
-      #binding.pry
       song.name
+#binding.pry
     end
   end
 end
