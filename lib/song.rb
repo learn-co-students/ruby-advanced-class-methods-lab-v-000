@@ -38,9 +38,14 @@ class Song
   end
 
   def self.alphabetical
-    @@songs.sort_by do |song|
+    @@all.sort_by do |song|
       song.name
-#binding.pry
     end
+  end
+
+  def self.new_from_filename(song_name)
+    song = Song.new_by_name(song_name)
+    song.save
+    song                    #instance of Song
   end
 end
