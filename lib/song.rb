@@ -1,10 +1,9 @@
-require 'pry'
 class Song
   attr_accessor :name, :artist_name
-  @@songs = []          #Changed from @@all
+  @@all = []
 
   def self.all
-    @@songs               #Changed from @@all
+    @@all
   end
 
   def save # a method that only operates on instances of Song; not on the Song class itself
@@ -38,14 +37,33 @@ class Song
   end
 
   def self.alphabetical
-    @@all.sort_by do |song|
+    self.all.sort_by do |song|
       song.name
     end
   end
 
-  def self.new_from_filename(song_name)
-    song = Song.new_by_name(song_name)
-    song.save
-    song                    #instance of Song
+  def self.new_from_filename(filename)
+    song = Song.new
+    artist_name = filename.split(" -").first
+    name = filename.split(".").first.split("- ").last  #perfrom multiple splits in one line
+    song.name = name
+    song.artist_name = artist_name
+    song
   end
+
+  def self.create_from_filename(filename)
+    #"Taylor Swift - Blank Space.mp3"
+    song = Song.new
+    artist_name = filename.split(" -").first
+    name = filename.split(".").first.split("- ").last
+    song.save
+    song.name = name
+    song.artist_name = artist_name
+    song
+  end
+
+  def self.destroy_all
+    @@all.clear
+  end
+
 end
