@@ -42,12 +42,54 @@ class Song
 
   # take song name and return mathcing instance or create new instance if none exist
   def self.find_or_create_by_name(name)
-    self.all.detect{|song| song.name == name} # check to see if name matches song.name of any instance
-      if @song.name == name # if name matches instance return instance
-        @song
-      else # create new instance if no match found
-        self.create_by_name(name)
-      end
+  ### Abstraction ###
+  self.find_by_name(name) || self.create_by_name(name)
+  ### Literal ###
+  #  self.all.detect{|song| song.name == name} #=> check to see if name matches song.name of any instance
+  #    if @song.name == name #=> if name matches instance return instance
+  #      @song
+  #    else #=> create new instance if no match found
+  #      self.create_by_name(name)
+  #    end
   end
 
+  #sort songs in @@all by alphabetical order
+  def self.alphabetical
+    self.all.sort_by{|song| song.name}
+  end
+
+  # create new instance from song file name (e.g. "Taylor Swift - Blank Space.mp3") that includes song.name and song.artist_name
+  def self.new_from_filename(filename)
+     # split into array delimited by - and . (RegEx)
+     artist_and_song = filename.split(/[-,\.]/)
+     name = artist_and_song[1] # set matching index = to name and artist_name
+     artist_name = artist_and_song[0]
+
+     @song = self.new #initializes song
+     @song.name = name.strip # set song name and strip whitespace
+     @song.artist_name = artist_name.strip # set artist_name/ strip space
+     @song
+  end
+
+  # same as .new_from_filename but also saves new song instance
+  def self.create_from_filename(filename)
+     # split into array delimited by - and . (RegEx)
+     artist_and_song = filename.split(/[-,\.]/)
+     name = artist_and_song[1] # set matching index = to name and artist_name
+     artist_name = artist_and_song[0]
+
+     @song = self.new #initializes song
+     @song.name = name.strip # set song name and strip whitespace
+     @song.artist_name = artist_name.strip # set artist_name / strip wspace
+     @song.save #save song to @@all
+     @song
+  end
+
+  # clear @@all
+  def self.destroy_all
+    self.all.clear
+  end
+
+
 end
+#binding.pry
