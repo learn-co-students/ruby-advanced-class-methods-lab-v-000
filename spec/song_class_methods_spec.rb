@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'pry'
 
-describe "Song Class Methods" do
+ describe "Song Class Methods" do
   describe '.create' do
     it 'instantiates and saves the song, and it returns the new song that was created' do
       song = Song.create
@@ -42,7 +42,7 @@ describe "Song Class Methods" do
       song_1 = Song.find_or_create_by_name("Blank Space")
       expect(song_1.name).to eq("Blank Space")
     end
-    
+
     it 'finds song by name if song has already been created' do
       song_1 = Song.find_or_create_by_name("Blank Space")
       song_2 = Song.find_or_create_by_name("Blank Space")
