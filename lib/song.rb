@@ -1,12 +1,7 @@
-require 'pry'
 class Song
   attr_accessor :name, :artist_name
   @@all = []
  
-  def initialize
-    @artist_name = artist_name
-  end # of initialize
-
 
   def self.all
     @@all
@@ -60,10 +55,22 @@ class Song
 
   def self.new_from_filename(filename)
     data = filename.split("-")
-    song = data[1].split(".mp3").join(" ").strip
-    artist_name = data[0].strip
-    self.new_by_name(song)
+    song_name = data[1].split(".mp3").join(" ").strip
+    song = self.new_by_name(song_name)
+    song.artist_name = data[0].strip
+    song
   end # of self.new_from_filename
+
+
+  def self.create_from_filename(filename)
+    song = self.new_from_filename(filename)
+    song.save 
+  end # of self.create_from_file_name
+
+
+  def self.destroy_all
+    @@all.clear 
+  end # of destroy_all
 
 
 end # of class 
