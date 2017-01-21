@@ -42,7 +42,7 @@ describe "Song Class Methods" do
       song_1 = Song.find_or_create_by_name("Blank Space")
       expect(song_1.name).to eq("Blank Space")
     end
-    
+
     it 'finds song by name if song has already been created' do
       song_1 = Song.find_or_create_by_name("Blank Space")
       song_2 = Song.find_or_create_by_name("Blank Space")
@@ -66,8 +66,9 @@ describe "Song Class Methods" do
     it 'initializes a song and artist_name based on the filename format' do
       song = Song.new_from_filename("Thundercat - For Love I Come.mp3")
 
-      expect(song.name).to eq("For Love I Come")
       expect(song.artist_name).to eq("Thundercat")
+      expect(song.name).to eq("For Love I Come")
+
     end
   end
 
