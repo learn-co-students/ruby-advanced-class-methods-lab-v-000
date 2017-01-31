@@ -12,7 +12,7 @@ class Song
 
   def self.create
     song = self.new
-    @@all << song
+    song.save
     song
   end
 
@@ -25,7 +25,7 @@ class Song
   def self.create_by_name(name)
     song = self.new
     song.name = name
-    @@all << song
+    song.save
     song
   end
 
@@ -65,7 +65,7 @@ class Song
     artist_name = array[0]
     song.name = name
     song.artist_name = artist_name
-    @@all << song
+    song.save
   end
 
   def self.destroy_all
