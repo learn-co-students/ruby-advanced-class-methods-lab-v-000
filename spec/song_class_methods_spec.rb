@@ -42,22 +42,23 @@ describe "Song Class Methods" do
       song_1 = Song.find_or_create_by_name("Blank Space")
       expect(song_1.name).to eq("Blank Space")
     end
-    
+
     it 'finds song by name if song has already been created' do
       song_1 = Song.find_or_create_by_name("Blank Space")
       song_2 = Song.find_or_create_by_name("Blank Space")
       expect(song_1).to be_a(Song)
       expect(song_2).to be_a(Song)
       expect(song_1.name).to eq(song_2.name)
+      expect(song_1.object_id).to eq(song_2.object_id)
     end
   end
 
   describe '.alphabetical' do
     it 'returns all the song instances in alphabetical order by song name' do
       song_1 = Song.create_by_name("Thriller")
-      song_2 = Song.create_by_name("Blank Space")
+      #binding.pry
       song_3 = Song.create_by_name("Call Me Maybe")
-
+      song_2 = Song.create_by_name("Blank Space")
       expect(Song.alphabetical).to eq([song_2, song_3, song_1])
     end
   end
