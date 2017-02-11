@@ -75,14 +75,15 @@ class Song
   end
   def self.create_from_filename(name)
     name_array = name.split(/ - |\.mp3/)#converts string to an array with split method
-    binding.pry
+    #binding.pry
     song = name_array.each do |row|
       artist_name = name_array[0]
-      song_name = name_array[2]
-      a_song = self.new
-      a_song.song_name = song_name
+      song_name = name_array[1]
+      binding.pry
+      a_song = self.new(song_name)
+      #a_song.song_name = song_name
       a_song.artist_name = artist_name
-      a_song
+      a_song.save
     end
     song
   end
