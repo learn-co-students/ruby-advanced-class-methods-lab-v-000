@@ -79,13 +79,18 @@ class Song
     song = name_array.each do |row|
       artist_name = name_array[0]
       song_name = name_array[1]
-      binding.pry
-      a_song = self.new(song_name)
+      #binding.pry
+      a_song = self.new(song_name)#LEARN: song_name value is passed to
+      #initialized method name argument
       #a_song.song_name = song_name
       a_song.artist_name = artist_name
       a_song.save
     end
     song
+  end
+  def self.destroy_all
+        Song.all.delete(/./)
+        #binding.pry
   end
 end
 #https://repl.it/FbQ0/17
