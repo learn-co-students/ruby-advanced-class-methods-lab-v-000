@@ -89,8 +89,10 @@ class Song
     song
   end
   def self.destroy_all
-        Song.all.delete(/./)
-        #binding.pry
+    @@all = []
+    #@@all
+    #binding.pry
+    #binding.pry
   end
 end
 #https://repl.it/FbQ0/17
