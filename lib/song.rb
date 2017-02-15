@@ -65,12 +65,10 @@ class Song
     return song
   end
 
-  def self.create_from_filename(filename)
-    info = filename.split(/[.-]/)
-    song = self.new
-    song.artist_name = info[0].strip
-    song.name = info[1].strip
-    song.save
+  def self.create_from_filename(filename) #just references the above function and saves from it. 
+    newmp3 = self.new_from_filename(filename)
+    newmp3.save
+    return newmp3
   end
 
 end
