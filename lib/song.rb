@@ -56,5 +56,7 @@ class Song
     song.artist_name = array[0]
   end
 
-
+  def self.destroy_all
+    @@all = []
+  end
 end
