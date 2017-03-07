@@ -1,5 +1,7 @@
+require 'pry'
+
 class Song
-  attr_accessor :name, :artist_name
+  attr_accessor :name, :artist_name, :song
   @@all = []
 
   def self.all
@@ -8,6 +10,67 @@ class Song
 
   def save
     self.class.all << self
+  end
+
+#called a constructor
+  def self.create #self is the class itself - constructor
+    name = self.new
+    name.save
+    name
+
+  end
+
+
+#def self.new_by_name(string name of song)
+# how do i take in a string and return a song instance?
+  #returns song instance with the name set as name property
+  #shold return an instance of song and not a simple string
+  def self.new_by_name(song_name)
+    @song = self.new
+    @song.name = song_name
+    @song
+
+  end
+  def self.create_by_name(song_name)
+    @song = self.new
+    @song.name = song_name
+    @song.save
+    @song
+
+  end
+  def self.find_by_name(song_name)
+    self.all.detect{|s| s.name == song_name }
+  end
+
+  def self.find_or_create_by_name(song_name)
+    self.find_by_name(song_name) || self.create_by_name(song_name)
+  end
+  def self.alphabetical
+    self.all.sort_by{|s| s.name }
+  end
+  def self.new_from_filename(filename)
+    parts = filename.split(" - ")
+    artist_name = parts[0]
+    song_name = parts[1].gsub(".mp3", "")
+
+    song = self.new
+    song.name = song_name
+    song.artist_name = artist_name
+    song
+  end
+  def self.create_from_filename(filename)
+    parts = filename.split(" - ")
+    artist_name = parts[0]
+    song_name = parts[1].gsub(".mp3", "")
+
+    song = self.create
+    song.name = song_name
+    song.artist_name = artist_name
+    song
+  end
+
+  def self.destroy_all
+    @@all.clear
   end
 
 end
