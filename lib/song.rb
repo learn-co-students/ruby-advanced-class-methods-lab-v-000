@@ -23,9 +23,8 @@ class Song
   end
 
   def self.create_by_name(name)
-    song = self.new
+    song = self.create
     song.name = name
-    song.save
     song
   end
 
@@ -34,11 +33,14 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    if self.all.any?{|song| song.name == name}
-      self.find_by_name(name)
-    else
-      self.create_by_name(name)
-    end    
+    #first solution
+    #if self.all.any?{|song| song.name == name}
+    #  self.find_by_name(name)
+    #else
+    #  self.create_by_name(name)
+    #end
+    #refactored
+    self.find_by_name(name) || self.create_by_name(name)     
   end
 
   def self.alphabetical
@@ -55,10 +57,9 @@ class Song
 
   def self.create_from_filename(filename)
     data = filename.split(/[-.]/)
-    song = self.new
+    song = self.create
     song.name = data[1].strip
     song.artist_name = data[0].strip
-    song.save
     song
   end
 
