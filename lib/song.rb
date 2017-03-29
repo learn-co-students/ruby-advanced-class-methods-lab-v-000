@@ -41,7 +41,9 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    song_artist, song_name = filename.match(/(.*) - (.*)\./i).captures
+    #song_artist, song_name = filename.match(/(.*) - (.*)\./i).captures
+    /(.*) - (.*)\./i =~ filename
+    song_artist, song_name = $1, $2
     song = self.new_by_name(song_name)
     song.artist_name = song_artist
     song
