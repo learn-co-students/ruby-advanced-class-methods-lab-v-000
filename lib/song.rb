@@ -13,17 +13,17 @@ class Song
   def self.create
     song = self.new
     song.save
-    return song
+    song
   end
 
   def self.new_by_name(name)
     song = self.create
     song.name = name
-    return song
+    song
   end
 
   def self.create_by_name(name)
-    return song = self.new_by_name(name)
+    self.new_by_name(name)
   end
 
   def self.find_by_name(name)
@@ -43,7 +43,7 @@ class Song
     song = self.new
     song.artist_name = artist_song.first
     song.name = artist_song.last
-    return song
+    song
   end
 
   def self.create_from_filename(filename)
