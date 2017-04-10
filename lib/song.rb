@@ -48,6 +48,7 @@ class Song
   def self.new_from_filename(filename)
     parts = filename.split(" - ")
     artist_name = parts[0]
+    #gsub(".mp3", "") replaces all occurances of mp3 with "" to remove the mp3 from the filename.
     song_name = parts[1].gsub(".mp3", "")
 
     song = self.new
@@ -59,6 +60,7 @@ class Song
 def self.create_from_filename(filename)
   parts = filename.split(" - ")
    artist_name = parts[0]
+   #gsub(".mp3", "") replaces all occurances of mp3 with "" to remove the mp3 from the filename.
    song_name = parts[1].gsub(".mp3", "")
 
    song = self.create
