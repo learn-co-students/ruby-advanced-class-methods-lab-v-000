@@ -45,7 +45,32 @@ class Song
   end
 
   def self.alphabetical
-    self.sort{|a, b| a.name <=> b.name}
+    self.all.sort{|a, b| a.name <=> b.name}
+  end
+
+  def self.new_from_filename(string)
+    name_array = string.split(".")
+    separated_name = name_array[0].split(" - ")
+    name = separated_name[1]
+    artist_name = separated_name[0]
+
+    song = self.new
+    song.name = name
+    song.artist_name = artist_name
+    song
+  end
+
+  def self.create_from_filename(string)
+    name_array = string.split(".")
+    separated_name = name_array[0].split(" - ")
+    name = separated_name[1]
+    artist_name = separated_name[0]
+
+    song = self.new
+    self.all << song
+    song.name = name
+    song.artist_name = artist_name
+    song
   end
 
   def self.destroy_all
