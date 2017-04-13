@@ -11,56 +11,59 @@ class Song
   end
 
   def self.create
-  song = self.new
-  song.save
-  song
-end
+    song = self.new
+    song.save
+    song
+  end
 
-def self.new_by_name(name)
-  song = self.new
-  song.name = name
-  song
-end
+  def self.new_by_name(name)
+    song = self.new
+    song.name = name
+    song
+  end
 
-def self.create_by_name(name)
+  def self.create_by_name(name)#################
     song = self.create
     song.name = name
     song
   end
 
   def self.find_by_name(song_name)
-    self.all.detect{|song|song.name == song_name}
+    self.all.find {|song| song.name == song_name}
   end
 
   def self.find_or_create_by_name(song_name)
-    self.find_by_name(song_name) ? self.find_by_name(song_name) : self.create_by_name(song_name)
+    self.find_by_name(song_name) || self.create_by_name(song_name)
   end
 
-  def self.alphabetical
-    self.all.sort_by {|song|song.name}
-
+  def self.alphabetical  #find song by name. #return as an array , sort array, relturn
+    self.all.sort_by{|s| s.name}
   end
+
   def self.new_from_filename(artist_name_and_song)
+    #artist_name_and_song.slice!(-4..-1) #remove ".mp3"
+    artist_name_and_song = artist_name_and_song.split(" - ") #array with artist_name and name as elements
+    artist = artist_name_and_song[0] # artist name
+    name = artist_name_and_song[1].gsub(".mp3","") # name
 
-     name_song = artist_name_and_song.slice!(0...-4).split(" - ")
-     artist_name = name_song[0]
-     name = name_song[1]
+    song = self.new
+    song.name = name
+    song.artist_name = artist
+    song
 
-     song = self.new
-     song.name = name
-     song.artist_name = artist_name
-     song
   end
 
   def self.create_from_filename(artist_name_and_song)
-    name_song = artist_name_and_song.slice!(0...-4).split(" - ")
-    artist_name = name_song[0]
-    name = name_song[1]
+    #artist_name_and_song.slice!(-4..-1) #remove ".mp3"
+    artist_name_and_song = artist_name_and_song.split(" - ") #array with artist_name and name as elements
+    artist = artist_name_and_song[0] # artist name
+    name = artist_name_and_song[1].gsub(".mp3","") # name
 
     song = self.create
+    song.artist_name = artist
     song.name = name
-    song.artist_name = artist_name
     song
+
   end
 
   def self.destroy_all
