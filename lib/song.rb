@@ -68,8 +68,3 @@ class Song
     @@all = []
   end
 end
-# ### `Song.destroy_all`
-# The `Song.destroy_all` class method should reset the state of the
-# `@@all` class variable to an empty array thereby deleting all previous
-# song instances.
-#
