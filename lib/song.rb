@@ -58,10 +58,10 @@ class Song
   end
 
   def self.strip_filename(filename)
-      temp = filename.split("-")
-      temp[0] = temp[0].rstrip
-      temp[1] = temp[1].split(".")[0].lstrip
-      filename = temp
+      info = filename.split("-")
+      info[0] = info[0].rstrip
+      info[1] = info[1].split(".")[0].lstrip
+      info
   end
 
   def self.destroy_all
