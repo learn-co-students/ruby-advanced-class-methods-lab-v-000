@@ -2,9 +2,6 @@
   attr_accessor :name, :artist_name
   @@all = []
 
-#  def initialize(name, artist_name)
-#    @artist_name = artist_nam  end
-
   def self.all
     @@all #returns all elements in array
   end
