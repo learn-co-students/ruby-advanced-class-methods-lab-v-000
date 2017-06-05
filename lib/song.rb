@@ -23,18 +23,17 @@ class Song
   end
 
   def self.create_by_name(name)
-    song = self.new
+    song = self.create
     song.name = name
-    song.save
     song
   end
 
   def self.find_by_name(name)
-    @@all.find {|song| song.name == name}
+    self.all.find {|song| song.name == name}
   end
 
   def self.find_or_create_by_name(name)
-    if @@all.find {|song| song.name == name} == name
+    if self.al.find {|song| song.name == name} == name
       name
     else
       self.create_by_name(name)
@@ -55,7 +54,7 @@ class Song
   def self.create_from_filename(file_name)
     song = self.create
     song.artist_name = file_name.split(" - ").first
-    song.name = file_name.split(" - ").last.chomp(".mp3")    
+    song.name = file_name.split(" - ").last.chomp(".mp3")
   end
 
   def self.destroy_all
