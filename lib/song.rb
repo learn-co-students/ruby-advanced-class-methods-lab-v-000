@@ -1,4 +1,3 @@
-require 'pry'
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -64,7 +63,6 @@ class Song
     song = self.new_from_filename(filename)
     song.save
     song
-  # to be coded when self.new_from_filename finished
   end
 
 
