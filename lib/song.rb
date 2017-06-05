@@ -55,8 +55,7 @@ class Song
   def self.create_from_filename(file_name)
     song = self.create
     song.artist_name = file_name.split(" - ").first
-    song.name = file_name.split(" - ").last.chomp(".mp3")
-    song.save
+    song.name = file_name.split(" - ").last.chomp(".mp3")    
   end
 
   def self.destroy_all
