@@ -12,20 +12,19 @@ class Song
 
   def self.create
     song = self.new
-    song.save
+    self.all << song
     song
   end
 
   def self.create_by_name(name)
-    song = self.new
+    song = self.create
     song.name = name
-    song.save
     song
   end
 
   def self.create_from_filename(filename)
     song = self.new_from_filename(filename)
-    song.save
+    song
   end
 
   def self.destroy_all
