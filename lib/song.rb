@@ -63,7 +63,8 @@ class Song
     data = filename.split("-")
     artist = data[0].strip
     name = data[1].chomp(".mp3").strip
-    song = Song.new
+
+    song = self.create
     song.name = name
     song.artist_name = artist
     song.save
