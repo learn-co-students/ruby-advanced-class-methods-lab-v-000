@@ -42,7 +42,7 @@ describe "Song Class Methods" do
       song_1 = Song.find_or_create_by_name("Blank Space")
       expect(song_1.name).to eq("Blank Space")
     end
-    
+
     it 'finds song by name if song has already been created' do
       song_1 = Song.find_or_create_by_name("Blank Space")
       song_2 = Song.find_or_create_by_name("Blank Space")
@@ -57,7 +57,6 @@ describe "Song Class Methods" do
       song_1 = Song.create_by_name("Thriller")
       song_2 = Song.create_by_name("Blank Space")
       song_3 = Song.create_by_name("Call Me Maybe")
-
       expect(Song.alphabetical).to eq([song_2, song_3, song_1])
     end
   end
