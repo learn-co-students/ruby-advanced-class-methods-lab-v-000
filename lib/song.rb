@@ -4,9 +4,13 @@ class Song
   attr_accessor :name, :artist_name
   @@all = []
 
+  def self.all
+    @@all
+  end
+
   def self.create
     song = self.new
-    @@all << song
+    song.save
     song
   end
 
@@ -49,15 +53,11 @@ class Song
   end
 
   def self.destroy_all
-    @@all.clear
+    self.all.clear
   end
 
   def self.parse_file_name(file_name)
     parsed_file_name = /^(.*)\s\-\s(.*)\.\w{3}$/.match(file_name)
-  end
-
-  def self.all
-    @@all
   end
 
   def save
