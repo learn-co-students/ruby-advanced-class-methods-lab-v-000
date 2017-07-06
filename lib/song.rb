@@ -1,3 +1,5 @@
+require 'pry'
+
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -49,7 +51,23 @@ class Song
   end
 
   def self.new_from_filename(file)
+    # Taylor Swift - Blank Space.mp3 => takes this and split at '-' and remove '.mp3' (use .chomp('.mp3'))
+    clean_file = file.split('-')
+    artist = clean_file[0].strip
+    song = clean_file[1].chomp('.mp3').strip
+    new_song = self.new_by_name(song)
+    new_song.artist_name = artist
+    new_song
+  end
 
+  def self.create_from_filename(file)
+    new_song = self.new_from_filename(file)
+    new_song.save
+    new_song
+  end
+
+  def self.destroy_all
+    @@all.clear
   end
 
 end
