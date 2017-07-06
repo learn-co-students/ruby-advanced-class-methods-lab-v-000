@@ -20,25 +20,24 @@ class Song
   end
 
   def self.new_by_name(name)
-    s = Song.new
-    #s.save
+    s = self.new
     s.name = name
     s
   end
 
   def self.create_by_name(name)
-    s = Song.new
-
+    s = self.create
     s.name = name
-    s.save
     s
   end
 
   def self.find_by_name(name)
-    result = nil
-    result = @@all.find {|i| i.name = name}
+    # result = nil
+    # result =
+     binding.pry
+    self.all.detect {|i| i.name = name}
   end
 
-#binding.pry
+
 
 end
