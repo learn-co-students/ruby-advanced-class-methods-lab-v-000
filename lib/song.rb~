@@ -13,7 +13,6 @@ class Song
   def self.create
   	song = self.new
   	song.save
-  	#@@all << song
   	song
   end
 
@@ -31,7 +30,7 @@ class Song
   end
   
 	def self.find_by_name(name)
-		@@all.detect {|person| person.name == name }
+		@@all.detect {|song| song.name == name }
 	end
 	
 	def self.find_or_create_by_name(name)
@@ -41,7 +40,6 @@ class Song
 	def self.alphabetical
 		@@all.sort_by { |song| song.name }
 	end
-
 
 	def self.new_from_filename(filename)
 		song_name = filename.split('-')[1].split('.')[0].strip

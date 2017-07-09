@@ -13,7 +13,6 @@ class Song
   def self.create
   	song = self.new
   	song.save
-  	#@@all << song
   	song
   end
 
@@ -23,7 +22,7 @@ class Song
 		song
   end
   
-    def self.create_by_name(name)
+   def self.create_by_name(name)
 		song = self.new
 		song.name = name
 		song.save
@@ -31,7 +30,7 @@ class Song
   end
   
 	def self.find_by_name(name)
-		@@all.detect {|person| person.name == name }
+		@@all.detect {|song| song.name == name }
 	end
 	
 	def self.find_or_create_by_name(name)
@@ -44,23 +43,12 @@ class Song
 
 	def self.new_from_filename(filename)
 		song_name = filename.split('-')[1].split('.')[0].strip
-		song = Song.new_by_name(song_name)
-		artist = filename.split('-')[0].strip
-		song.artist_name = artist
-		song
-	end
-
-=begin
-	def self.new_from_filename(filename)
-		song_name = filename.split('-')[1].split('.')[0].strip
 		song = self.new
 		song.name = song_name
 		artist = filename.split('-')[0].strip
 		song.artist_name = artist
 		song
 	end
-=end
-
 
 	def self.create_from_filename(filename)
 		song_name = filename.split('-')[1].split('.')[0].strip
