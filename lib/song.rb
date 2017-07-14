@@ -46,6 +46,14 @@ class Song
     @@all.sort_by {|song| song.name}
   end
   
+  require 'pry'
+  
+  def self.new_from_filename(name)
+    binding.pry
+    name = name.split(".mp3")
+    artist_name = name.split("-").first
+    
+  end
   
   
  
