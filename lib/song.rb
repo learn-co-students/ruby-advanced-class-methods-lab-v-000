@@ -48,14 +48,12 @@ class Song
   
   require 'pry'
   
-  def self.new_from_filename(name)
-    binding.pry
-    name = name.split(".mp3")
-    artist_name = name.split("-").first
-    
+  def self.new_from_filename(file)
+  binding.pry
+  name = file.split(" - ")[1].split(".")[0].to_s
+  artist_name = file.split("-").first.to_s.strip
+  
   end
-  
-  
  
 
 end
