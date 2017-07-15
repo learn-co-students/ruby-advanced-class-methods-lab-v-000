@@ -46,14 +46,20 @@ class Song
     @@all.sort_by {|song| song.name}
   end
   
-  require 'pry'
+ require 'pry'
   
   def self.new_from_filename(file)
-  binding.pry
-  file.split(" - ")[1].split(".")[0].to_s = name
-  artist_name = file.split("-").first.to_s.strip
-  
+    song = self.new
+    name = file.split(" - ")[1].split(".")[0] 
+    song.name = name
+    artist_name = file.split("-").first.strip
+    song.artist_name = artist_name
+   
   end
  
-
+ def self.destroy_all
+   @@all=[]
+ end
+ 
+ 
 end
