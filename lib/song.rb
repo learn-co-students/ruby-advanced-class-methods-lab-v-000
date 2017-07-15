@@ -59,14 +59,12 @@ class Song
   end
   
   def self.create_from_filename(file)
-    # song = self.new
-    # #pusedo code
-    # # dash = "-"
-    # # mp3 = ".mp3"
-    # # name = file.split(" - ")[1].split(".")[0]
-    # # artist_name = file.split("-").first.strip
-    # # file << #{artist_name} + #{dash} + #{name}+ #{mp3}
-    #file
+    song = self.new
+    name = file.split(" - ")[1].split(".")[0] 
+    song.name = name
+    artist_name = file.split("-").first.strip
+    song.artist_name = artist_name
+    song.save
   end
  
  def self.destroy_all
