@@ -54,6 +54,7 @@ class Song
     song.name = name
     artist_name = file.split("-").first.strip
     song.artist_name = artist_name
+    return song
    
   end
   
@@ -64,7 +65,8 @@ class Song
     # # mp3 = ".mp3"
     # # name = file.split(" - ")[1].split(".")[0]
     # # artist_name = file.split("-").first.strip
-    # # file = #{artist_name} + #{dash} + #{name}+ #{mp3}
+    # # file << #{artist_name} + #{dash} + #{name}+ #{mp3}
+    #file
   end
  
  def self.destroy_all
