@@ -20,9 +20,18 @@ class Song
   end
 
   def save
-    self.class.all << self
+    self.all << self
   end
 
+  def self.create
+    Song.new 
+  end
+
+  def initialize
+    Song.save 
+  end 
+
+  
 end
 
 ```
