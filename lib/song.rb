@@ -34,11 +34,12 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    if self.find_by_name(name)
-      return self.find_by_name(name)
-    else
-      self.create_by_name(name)
-    end
+    # if self.find_by_name(name)
+    #   return self.find_by_name(name)
+    # else
+    #   self.create_by_name(name)
+    # end
+    self.find_by_name(name) || self.create_by_name(name)
   end
 
   def self.alphabetical
@@ -67,7 +68,7 @@ class Song
     song
   end
 
-def self.destroy_all
+ def self.destroy_all
   self.all.clear
 end
 
