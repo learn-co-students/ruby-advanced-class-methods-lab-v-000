@@ -12,7 +12,7 @@ class Song
   end
 
   def self.create
-    song = self.new
+    song = self.new #or song = new
     song.save #"@@all << song" works too
     song
   end
