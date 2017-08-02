@@ -36,4 +36,20 @@ class Song
   def self.find_or_create_by_name(song_name)
     self.find_by_name(song_name) || self.create_by_name(song_name)
   end
+
+  def self.alphabetical
+    self.all.sort_by { |item| item.name}
+  end
+
+  def self.new_from_filename(filename)
+
+  end
+
+  def self.create_from_filename(filename)
+
+  end
+
+  def self.destroy_all
+    @@all.clear
+  end
 end
