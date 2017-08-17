@@ -18,17 +18,19 @@ class Song
     song
   end
 
+  #instantiates a new instance of the Song class
+  #song = Song.new_by_name("Happy")
+  #Makes the argument of song_name equal to the name method in the attr_accessor
+  #so that when I call song.name, I get "Happy".
+  #returns the song
   def self.new_by_name(song_name)
-    song = self.new #instantiates a new instance of the Song class
-    #song = Song.new_by_name("Happy")
-    song.name = song_name #Makes the argument of song_name equal to the name method in the attr_accessor
-    #so that when I call song.name, I get "Happy".
-    song #returns the song
+    song = self.new
+    song.name = song_name
+    song
   end
 
-  def self.create_by_name(song_name) #can't get this one working; don't get how it is different from
-    #Song.new_by_name(song_name)
-    song = self.create #why does song = self.new not work here?????
+  def self.create_by_name(song_name)
+    song = Song.create #this method will create and save the song
     song.name = song_name
     song
   end
