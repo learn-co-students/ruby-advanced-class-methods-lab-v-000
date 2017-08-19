@@ -18,6 +18,13 @@ class Song
     song
   end
 
+  # # solution version
+  # def self.create
+  #   song = Song.new
+  #   song.save
+  #   song
+  # end
+
   def self.new_by_name(name)
     song = self.new
     song.name = name
@@ -31,6 +38,13 @@ class Song
     song
   end
 
+## solution version
+# def self.create_by_name(song_name)
+#   song = self.create
+#   song.name = song_name
+#   song
+# end
+
   def self.find_by_name(name)
     self.all.detect{|song| song.name == name}
   end
@@ -43,10 +57,21 @@ class Song
     end
   end
 
+##solution version
+# def self.find_or_create_by_name(song_name)
+#   self.find_by_name(song_name) || self.create_by_name(song_name)
+# end
+
   def self.alphabetical
     alphabetized_songs = self.all.sort_by{|song| song.name}
     alphabetized_songs
   end
+
+# #solution version
+# def self.alphabetical
+#   self.all.sort_by{|s| s.name}
+# end
+
 
   def self.new_from_filename(filename)
     artist_and_song = filename.split(/[-.]/).slice(0,2).map{|entry| entry.strip}
@@ -59,6 +84,17 @@ class Song
     song
   end
 
+# def self.new_from_filename(filename)
+#   parts = filename.split(" - ")
+#   artist_name = parts[0]
+#   song_name = parts[1].gsub(".mp3", "")
+#
+#   song = self.new
+#   song.name = song_name
+#   song.artist_name = artist_name
+#   song
+# end
+
   def self.create_from_filename(filename)
     artist_and_song = filename.split(/[-.]/).slice(0,2).map{|entry| entry.strip}
     artist = artist_and_song[0]
@@ -70,6 +106,17 @@ class Song
     self.all << song
     song
   end
+
+# def self.create_from_filename(filename)
+#   parts = filename.split(" - ")
+#   artist_name = parts[0]
+#   song_name = parts[1].gsub(".mp3", "")
+#
+#   song = self.create
+#   song.name = song_name
+#   song.artist_name = artist_name
+#   song
+# end
 
   def self.destroy_all
     self.all.clear
