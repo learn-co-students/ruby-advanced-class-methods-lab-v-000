@@ -37,30 +37,48 @@ class Song
 
    def self.find_or_create_by_name(name) #class METHOD
      find_by_name(name) || create_by_name(name)
-
     end
-
 
     def self.alphabetical
        @@all.sort_by(&:name)
      end
 
+     def self.new_from_filename(filename)
+       entries = filename.split(" - ")
 
-    def self.new_from_filename(file_data)
-      data = file_data.split(" - ")
-      song = data.collect do |data|
-       data = file_data.split(", ")
-       artist_name = data[0]
-       name = data[1]
-       binding.pry
-      song = self.new
-      song.artist_name = artist_name
-      song.name = name
-      song
-    end
-    song
-  end
+       artist_name = entries[0]
+       name = entries[1]
+       name=name.gsub(".mp3", "")
+
+       song = self.new
+       song.artist_name = artist_name
+       song.name = name
+
+       song
+     end
+   end
+
+        def self.create_from_filename(filename)
+        create_from_filename == new_from_filename
+        song.save
+        # entries = filename.split(" - ")
+        #
+        # artist_name = entries[0]
+        # name = entries[1]
+        # name=name.gsub(".mp3", "")
+        #
+        # song = self.new
+        # song.artist_name = artist_name
+        # song.name = name
+        #
+        # song
+      end
 
 
+      def self.destroy_all
+        @@all.clear
 
- end
+      end
+
+
+    # end
