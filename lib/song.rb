@@ -56,29 +56,23 @@ class Song
 
        song
      end
-   end
 
-        def self.create_from_filename(filename)
-        create_from_filename == new_from_filename
-        song.save
-        # entries = filename.split(" - ")
-        #
-        # artist_name = entries[0]
-        # name = entries[1]
-        # name=name.gsub(".mp3", "")
-        #
-        # song = self.new
-        # song.artist_name = artist_name
-        # song.name = name
-        #
-        # song
-      end
+    def self.create_from_filename(filename)
+      entries = filename.split(" - ")
+      artist_name = entries[0]
+      name = entries[1]
+      name=name.gsub(".mp3", "")
 
+      song = self.new
+      song.artist_name = artist_name
+      song.name = name
+      song.save
 
-      def self.destroy_all
+      song
+    end
+
+    def self.destroy_all
         @@all.clear
+    end
 
-      end
-
-
-    # end
+ end
