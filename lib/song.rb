@@ -6,11 +6,6 @@ class Song
     @@all
   end
 
-  # def initialize(name)
-  #   @name = name
-  #   self.class.all << self
-  # end
-
   def self.create
    song = self.new
    self.all << song
@@ -20,13 +15,11 @@ class Song
   def self.new_by_name(name)
     song = self.new
     song.name = name
-    self.all << song
     song
   end
 
   def self.create_by_name(name)
-    song = self.new
-    song.name = name
+    song = self.new_by_name(name)
     self.all << song
     song
   end
@@ -43,14 +36,15 @@ class Song
   end
 
   def self.alphabetical
-    self.all.sort_by! {|title| title.name}
+    sorted_list = self.all.sort_by {|title| title.name}
+    sorted_list
   end
 
   def self.new_from_filename(file)
-    song_artist_arr = filename.split(/\s[-]\s|.mp3/)
+    new_list = file.split(/\s[-]\s|.mp3/)
     new_song = self.new
-    new_song.artist_name = song_artist_arr[0]
-    new_song.name = song_artist_arr[1]
+    new_song.artist_name = new_list[0]
+    new_song.name = new_list[1]
     new_song
   end
 
@@ -61,14 +55,6 @@ class Song
 
   def self.destroy_all
     self.all.clear
-  end
-
-  def self.all
-    @@all
-  end
-
-  def save
-    self.class.all << self
   end
 
 end
