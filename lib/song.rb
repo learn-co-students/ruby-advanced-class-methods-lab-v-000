@@ -20,14 +20,14 @@ class Song
 
   def self.new_by_name(name)
     song = self.new
-    song.name = name
+		song.name = name
     song
   end
 
   def self.create_by_name(name)
     song = self.new
     song.name = name
-    song.save
+		song.save
     song
   end
 
@@ -78,6 +78,4 @@ class Song
   def self.destroy_all
     self.all.clear
   end
-
 end
-
