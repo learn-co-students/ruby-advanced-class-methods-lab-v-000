@@ -14,7 +14,7 @@ class Song
 
   def self.create
     song = Song.new
-    self.all << song
+    song.save
     song
   end
 
@@ -35,7 +35,6 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    binding.pry
     self.find_by_name(name) || self.create_by_name(name)
   end
 
@@ -44,13 +43,23 @@ class Song
   end
 
   def self.new_from_filename(filename)
-
+    song_name = filename.chomp(".mp3").split(" - ")
+    song = self.new
+    song.name = song_name[1]
+    song.artist_name = song_name[0]
+    song
   end
 
-  def create_from_filename
+  def self.create_from_filename(filename)
+    song_name = filename.chomp(".mp3").split(" - ")
+    song = self.create
+    song.name = song_name[1]
+    song.artist_name = song_name[0]
+    song
   end
 
   def self.destroy_all
+    self.all.clear
   end
 
 end
