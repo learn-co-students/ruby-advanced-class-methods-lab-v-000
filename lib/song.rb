@@ -1,4 +1,4 @@
-require 'pry'
+
 
 class Song
   attr_accessor :name, :artist_name
@@ -65,7 +65,4 @@ class Song
   def self.destroy_all
     self.all.clear
   end
-
 end
-
-#song = Song.new_from_filename("Thundercat - For Love I Come.mp3")
