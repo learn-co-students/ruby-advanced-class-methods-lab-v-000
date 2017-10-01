@@ -52,12 +52,29 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    data = filename.split("-")
-    artist_name = data [0]
-    name = data[1]
+    data = filename.split(" - ")
+    artist_name = data [0].chomp(" ")
+    name = data[1].strip
 
     song = self.new
-    song.name = name
+    song.name = name.chomp(".mp3")
     song.artist_name = artist_name
+    song
+  end
+
+  def self.create_from_filename(filename)
+    data = filename.split(" - ")
+    artist_name = data [0].chomp(" ")
+    name = data[1].strip
+
+    song_from_file = self.new
+    song_from_file.name = name.chomp(".mp3")
+    song_from_file.artist_name = artist_name
+    song_from_file.save
+    song_from_file
+  end
+
+  def self.destroy_all
+    self.all.clear
   end
 end
