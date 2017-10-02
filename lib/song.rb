@@ -56,7 +56,17 @@ class Song
     song
   end
 
-end
-def self.create_from_filename(name)
-  song.save = self.new_from_filename
+
+  def self.create_from_filename(name)
+    file_name = name.split(/\s\-\s|\./)
+    song = self.new
+    song.artist_name = file_name[0]
+    song.name = file_name[1]
+    song.save
+    song
+  end
+
+  def self.destroy_all
+    @@all.clear
+  end
 end
