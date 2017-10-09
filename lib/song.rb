@@ -30,6 +30,8 @@ class Song
     song.name = song_name
     @@all << song
     song
+    #Better Solution!
+    #self.all << self.new_by_name(song_name)
   end
 
   def self.find_by_name(song_name)
@@ -67,6 +69,8 @@ class Song
     song.artist_name = artist_name
     @@all << song
     song
+    #Better solution!
+    # self.all << self.new_from_filename(filename)
   end
 
   def self.destroy_all
