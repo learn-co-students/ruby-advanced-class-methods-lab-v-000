@@ -43,8 +43,8 @@ class Song
   def self.new_from_filename(filename)
     part = filename.split(" - ")
     artist_name = part[0]
-    song_title = part[1].split(".")
-    song_name = song_title[0]
+    song_title = part[1].split(".") # or using.gsub to
+    song_name = song_title[0] #return all text except .mp3
 
     song = self.new
     song.name = song_name
@@ -55,8 +55,8 @@ class Song
   def self.create_from_filename(filename)
     part = filename.split(" - ")
     artist_name = part[0]
-    song_title = part[1].split(".")
-    song_name = song_title[0]
+    song_title = part[1].split(".") #or using .gsub to
+    song_name = song_title[0] #return all text except .mp3
 
     song = self.create
     song.name = song_name
