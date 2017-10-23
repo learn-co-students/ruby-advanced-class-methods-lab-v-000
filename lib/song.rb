@@ -32,6 +32,27 @@ class Song
   def self.find_by_name(name)
     self.all.detect{|song| song.name == name}
   end
+
+  def self.new_from_filename(filename_data)
+      row = filename_data
+      data = row.split(" - ")
+      artist_name = data[0]
+      song_name = data[1].gsub(".mp3", "")
+
+      song = self.new
+
+      song.name = song_name
+      song.artist_name = artist_name
+
+      song
+  end
+
+  def self.create_from_filename(filename_data)
+    filename = self.new_from_filename(filename_data)
+    filename.save
+    filename
+  end
+
 end
 
 def Song.find_or_create_by_name(name)
@@ -42,12 +63,6 @@ def Song.alphabetical
   self.all.sort_by {|song| song.name}
 end
 
-def Song.new_from_filename(song)
-    song = self.new
-    song.name = name
-    song.artist_name = artist_name
-    song
-end
 
 def Song.destroy_all
   self.all.clear
