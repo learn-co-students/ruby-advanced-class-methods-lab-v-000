@@ -43,10 +43,12 @@ def Song.alphabetical
 end
 
 def Song.new_from_filename(song)
-  @song = song
-  @artist_name = artist_name
+    song = self.new
+    song.name = name
+    song.artist_name = artist_name
+    song
 end
 
 def Song.destroy_all
   self.all.clear
-end 
+end
