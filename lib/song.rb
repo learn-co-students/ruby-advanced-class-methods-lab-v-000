@@ -60,7 +60,8 @@ class Song
     artist = artist_and_name[0].strip
     song_name = artist_and_name[1].strip
 
-    song = self.create
+    song = self.new
+    song.save
     song.name =song_name
     song.artist_name = artist
     song
