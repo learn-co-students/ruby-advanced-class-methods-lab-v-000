@@ -32,18 +32,25 @@ class Song
   end
 
   def self.find_by_name(name)
-    song = self.new
-    song.name = name
+    @@all.find {|song| song.name == name}
+  end
 
-    @@all.find {|song|
-      when song == song.name
-        then song.name
-      end }
-    # @@all << song
-    # @@all.find {|song| song.name}
+  def self.find_or_create_by_name(name)
+    if name == self.find_by_name
+    else self.create_by_name
+  end
 
+  def self.alphabetical
+    @@all.sort_by
   end
 
 end
+    # accept a string name for a song and
+    # either return a matching song instance with that name or
+    #   create a new song with the name and return the song instance.
 
+
+
+
+end
 # binding.pry
