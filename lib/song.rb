@@ -53,18 +53,17 @@ class Song
     # binding.pry
   end
 
+  def self.create_from_filename(filename)
+    song = self.new_from_filename(filename)
+    @@all << song
+  end
 
-  # delete(filename.last)
-  # name = filename.third
-  # artist_name = filename.first
-
-
-  # Build a class constructor that accepts a filename in the format of " - .mp3", for example "Taylor Swift - Blank Space.mp3".
-  #
-  # Given Song.new_from_filename("Taylor Swift - Blank Space.mp3"), the constructor should return a new Song instance with the song name set to Blank Space
-  #  and the artist_name set to Taylor Swift. The filename input sent to Song.new_from_filename in the format of Taylor Swift - Blank Space.mp3 must be parsed for
-  #  the relevant components. Separate the artist name from the rest of the data based on the - delimiter. Don't forget that when you parse the song name, you have to
-  #  remove the '.mp3' part of the string.
+  def self.destroy_all
+    @@all.clear
+  end
+# Build a class constructor that accepts a filename in the format of " - .mp3", for example "Taylor Swift - Blank Space.mp3".
+# The Song.create_from_filename class method should not only parse the filename correctly but should also save the Song instance that was created.
+#
 
 
 end
