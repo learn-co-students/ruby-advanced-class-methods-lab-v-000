@@ -15,7 +15,7 @@ class Song
 
     def self.create
       new_song = self.new
-      @@all << new_song
+      new_song.save
       new_song
     end
 
@@ -28,7 +28,7 @@ class Song
     def self.create_by_name(song_name)
       new_song = self.new
       new_song.name = song_name
-      @@all << new_song
+      new_song.save
       new_song
     end
 
@@ -45,15 +45,15 @@ class Song
     end
 
     def self.new_from_filename(filename)
-      song = self.new
-      song.name = filename.split(" - ")[1].chomp(".mp3")
-      song.artist_name = filename.split(" - ")[0]
-      song
+      new_song = self.new
+      new_song.name = filename.split(" - ")[1].chomp(".mp3")
+      new_song.artist_name = filename.split(" - ")[0]
+      new_song
     end
 
     def self.create_from_filename(filename)
       new_song = self.new_from_filename(filename)
-      @@all << new_song
+      new_song.save
     end
 
     def self.destroy_all
