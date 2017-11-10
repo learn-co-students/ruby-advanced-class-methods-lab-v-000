@@ -65,7 +65,7 @@ class Song
       song
     end
 
-    def self.create_from_filename(input)
+    def self.create_from_filename(input) #what the hell, the same thing
       clean = input.split(" - ")
       clean[1] = clean[1].chomp(".mp3")
       song = self.new
@@ -76,6 +76,7 @@ class Song
     end
 
     def self.destroy_all #calls clear on @@all
+      #@@all.clear
       self.all.clear
     end
 
