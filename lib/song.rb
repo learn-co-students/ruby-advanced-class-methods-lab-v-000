@@ -75,7 +75,7 @@ class Song
       song.save
       song
     end
-    def self.create_from_filename(input) #disregard below, did work as a test.  Now that I get it going to move along, would need to change the passing other methods to consolidate the parameters (like this), but then each instance would have an empty instead of nonexistent artist_name
+    def self.create_from_filename(input) #disregard below, did work as a test.  would need to change the passing other methods to consolidate the parameters (like this), but then each instance would have an empty instead of nonexistent artist_name
       self.filename_clean(input)
       #self
     end
