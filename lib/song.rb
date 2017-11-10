@@ -1,8 +1,8 @@
 class Song
   attr_accessor :name, :artist_name
   @@all = []
-  @name = ""
-  @artist_name = ""
+  #@name = "" #not necessary, declared inside the filename methods, see newbyname
+  #@artist_name = ""
     def self.all
       @@all
     end
@@ -20,6 +20,7 @@ class Song
     def self.new_by_name(song_string) #instantiates a song instance
         song = self.new
         song.name = song_string
+        #song.artist_name = "" #added inside the filename methods, more efficient but half-assed, instances may exist with undeclared, is that desired?
         song
     end
 
@@ -27,6 +28,7 @@ class Song
 
       song = self.new
       song.name = song_string
+      song.artist_name = ""
       song.save
       song
 
@@ -64,8 +66,20 @@ class Song
       #song.save
       song
     end
-
-    def self.create_from_filename(input) #what the hell, the same thing
+    def self.filename_clean(input)
+      clean = input.split(" - ")
+      clean[1] = clean[1].chomp(".mp3") #perfect for file extension, wanted opposite of .slice but found this is even more specific
+      song = self.new
+      song.name = clean[1]
+      song.artist_name = clean[0]
+      song.save
+      song
+    end
+    def self.create_from_filename(input) #disregard below, did work as a test.  Now that I get it going to move along, would need to change the passing other methods to consolidate the parameters (like this), but then each instance would have an empty instead of nonexistent artist_name
+      self.filename_clean(input)
+      #self
+    end
+    def self.zcreate_from_filename(input) #what the hell, the same thing (save didn't fail the above).  No idea how to make this more abstract, except add a method to outsource the input cleaning.  can't use the other methods since this adds a new .artist_name.  Better to be explicit rather than half-abstract?
       clean = input.split(" - ")
       clean[1] = clean[1].chomp(".mp3")
       song = self.new
@@ -76,10 +90,10 @@ class Song
     end
 
     def self.destroy_all #calls clear on @@all
-      #@@all.clear
+      #@@all.clear #not the point of this lesson, I think?  no real savings other than the call itself though (I guess the abstraction, can modify .clear later)
       self.all.clear
     end
-
+# a really rotten lab with an unclear lesson and even less clear rspec to follow.  Took about 4 hours (3am 11/10/17), sporadically.
 
 
 
