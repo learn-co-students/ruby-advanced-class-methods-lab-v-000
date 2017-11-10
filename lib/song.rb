@@ -75,11 +75,11 @@ class Song
       song.save
       song
     end
-    def self.create_from_filename(input) #disregard below, did work as a test.  would need to change the passing other methods to consolidate the parameters (like this), but then each instance would have an empty instead of nonexistent artist_name
+    def self.create_from_filename(input) #disregard below, did work as a test.
       self.filename_clean(input)
       #self
     end
-    def self.zcreate_from_filename(input) #what the hell, the same thing (save didn't fail the above).  No idea how to make this more abstract, except add a method to outsource the input cleaning.  can't use the other methods since this adds a new .artist_name.  Better to be explicit rather than half-abstract?
+    def self.zcreate_from_filename(input) #what the hell, the same thing (save didn't fail the above).  No idea how to make this more abstract, except add a method to outsource the input cleaning.
       clean = input.split(" - ")
       clean[1] = clean[1].chomp(".mp3")
       song = self.new
