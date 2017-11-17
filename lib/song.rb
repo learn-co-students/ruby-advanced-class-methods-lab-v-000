@@ -6,7 +6,12 @@ class Song
 
   def initialize 
     @@all << self 
+    
   end 
+  
+  def self.name
+    @name
+  end
   
   def self.all
     @@all
@@ -26,10 +31,12 @@ class Song
     # returns the new song 
   end 
 #    - new_by_name
+ 
   def self.new_by_name
     # instantiate with name property
-    binding.pry
-    song = self.new(@name)
+   
+    song = self.new
+    song.name(" ")
   end
 #    - create_by_name 
 #    - find_by_name 
