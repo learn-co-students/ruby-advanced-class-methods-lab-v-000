@@ -50,10 +50,13 @@ class Song
   end 
 #    - find_or_create_by_name 
   def self.find_or_create_by_name(name)
-    self.find_by_name(name)||self.create_by_name(name)
-    
+    self.find_by_name(name) || self.create_by_name(name)
   end 
 #    - alphabetical 
+  def self.alphabetical
+    
+    @@all.sort
+  end 
 #    - new_from_filename
 #    - create_from_filename
 #    - destroy_all 
