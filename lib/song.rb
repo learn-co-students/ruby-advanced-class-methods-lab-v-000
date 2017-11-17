@@ -36,6 +36,8 @@ class Song
   end
 #    - create_by_name 
   def self.create_by_name 
+    # instantiate song 
+    song = self.new 
     
   end 
 #    - find_by_name 
