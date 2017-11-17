@@ -17,11 +17,11 @@ class Song
   def self.create 
     # Song.new - instantiate
    
-    song = self.new 
+    song = Song.new 
     # save the new song
-   
+    new_song = song
     # returns the new song
-    song
+    new_song
   end 
 #    - new_by_name
 #    - create_by_name 
