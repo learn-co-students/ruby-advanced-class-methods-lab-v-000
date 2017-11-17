@@ -16,11 +16,11 @@ class Song
 #    - create 
   def self.create 
     # Song.new - instantiate
-    self.new 
-    # save the new song
     binding.pry
-    @@all << self
-    binding.pry 
+    song = self.new 
+    # save the new song
+    # @@all << self
+     
   end 
 #    - new_by_name
 #    - create_by_name 
