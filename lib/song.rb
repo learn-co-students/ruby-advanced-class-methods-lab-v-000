@@ -53,6 +53,10 @@ class Song
     self.find_by_name(name)
     self.create_by_name(name)
     name
+    if !self.find_by_name(name)
+      song = self.new
+      song.name = name
+    end 
   end 
 #    - alphabetical 
 #    - new_from_filename
