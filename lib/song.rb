@@ -5,13 +5,10 @@ class Song
   @@all = []
 
   def initialize 
+     
     @@all << self 
-    @name = " "
+    #@name = name
   end 
-  
-  def self.name
-    @name
-  end
   
   def self.all
     @@all
@@ -34,9 +31,9 @@ class Song
  
   def self.new_by_name(name)
     # instantiate with name property
-   
-   
-    song = self.name
+   song = self.new 
+   song.name = name  
+     
   end
 #    - create_by_name 
 #    - find_by_name 
