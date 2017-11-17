@@ -35,10 +35,14 @@ class Song
    song   
   end
 #    - create_by_name 
-  def self.create_by_name 
+  def self.create_by_name(name) 
     # instantiate song 
-    song = self.new 
-    
+    song = self.new
+    # saves song with name property
+    song.name = name 
+    @@all << song
+    # return song
+    song
   end 
 #    - find_by_name 
 #    - find_or_create_by_name 
