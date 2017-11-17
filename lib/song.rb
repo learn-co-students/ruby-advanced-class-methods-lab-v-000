@@ -18,7 +18,8 @@ class Song
     # Song.new - instantiate
     self.new 
     # save the new song
-    self.save
+    binding.pry
+    @@all << self
     binding.pry 
   end 
 #    - new_by_name
