@@ -8,7 +8,7 @@ class Song
     @@all
   end
 
-  def save
+  def self.save
     self.class.all << self
   end
   
@@ -16,11 +16,12 @@ class Song
 #    - create 
   def self.create 
     # Song.new - instantiate
-    binding.pry
+   
     song = self.new 
     # save the new song
-    # @@all << self
-     
+   
+    # returns the new song
+    song
   end 
 #    - new_by_name
 #    - create_by_name 
