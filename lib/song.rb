@@ -29,6 +29,7 @@ class Song
   end 
 #    - new_by_name
  
+# since instance methods are not avail within other instance methods, try creating a name class method and use in the new_by_name method 
   def self.new_by_name(name)
     # instantiate with name property
    song = self.new 
