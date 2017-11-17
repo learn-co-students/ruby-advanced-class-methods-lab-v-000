@@ -17,7 +17,9 @@ class Song
   def self.create 
     # Song.new - instantiate
     self.new 
-    binding.pry
+    # save the new song
+    self.save
+    binding.pry 
   end 
 #    - new_by_name
 #    - create_by_name 
