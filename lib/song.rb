@@ -46,12 +46,12 @@ class Song
   end 
 #    - find_by_name 
   def self.find_by_name(name)
-    binding.pry
-   
-    @@all.find { |song_name| }
-    
+    @@all.find {|song_name| song_name.name == name}  
   end 
 #    - find_or_create_by_name 
+  def self.find_or_create_by_name
+    
+  end 
 #    - alphabetical 
 #    - new_from_filename
 #    - create_from_filename
