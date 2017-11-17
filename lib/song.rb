@@ -55,7 +55,11 @@ class Song
 #    - alphabetical 
   def self.alphabetical
     
-    @@all.sort
+    self.find_by_name(name)
+   no_duplicates = @@all.uniq
+    no_duplicates.sort_by {|x| x.name}
+      
+    
   end 
 #    - new_from_filename
 #    - create_from_filename
