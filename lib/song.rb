@@ -50,12 +50,15 @@ class Song
   end 
 #    - find_or_create_by_name 
   def self.find_or_create_by_name(name)
-    self.find_by_name(name)
+    if !self.find_by_name(name)
+      song = self.new 
+      song.name = name 
+    else self.find_by_name(name)
+    end
     self.create_by_name(name)
     name
-    if !self.find_by_name(name)
-      song = self.new
-      song.name = name
+    
+ 
     end 
   end 
 #    - alphabetical 
