@@ -62,11 +62,16 @@ class Song
   def self.new_from_filename(artist_name)
     # initialize a song
     binding.pry
-    song = self.new
+    self.new_by_name(name)
     song.artist_name = artist_name
     
-    artist = artist_name.split("-")
-    file_type = artist_name.split(".")
+    artist = artist_name.split(".mp3")
+    artist[0] = artist_name
+    artist[1] = name
+    #file_format = artist.map do |file_type|
+     # file_type.split("-")
+    #end
+    #file_format
   end
 #    - create_from_filename
 #    - destroy_all 
