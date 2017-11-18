@@ -59,8 +59,14 @@ class Song
     no_duplicates.sort_by {|x| x.name}         
   end 
 #    - new_from_filename
-  def self.new_from_filename
-    
+  def self.new_from_filename(artist_name)
+    # initialize a song
+    binding.pry
+    song = self.new
+    song.artist_name = artist_name
+        @all.each do |file_type| 
+          file_type.split("-")
+        end
   end
 #    - create_from_filename
 #    - destroy_all 
