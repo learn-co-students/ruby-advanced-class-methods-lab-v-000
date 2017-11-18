@@ -64,9 +64,8 @@ class Song
     binding.pry
     song = self.new
     song.artist_name = artist_name
-        @all.each do |file_type| 
-          file_type.split("-")
-        end
+    artist = artist_name.split("-")
+    
   end
 #    - create_from_filename
 #    - destroy_all 
