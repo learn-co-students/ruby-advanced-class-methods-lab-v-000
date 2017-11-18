@@ -65,7 +65,7 @@ class Song
     song = self.new
     song.artist_name = artist_name
     artist = artist_name.split("-")
-    
+    file_type = artist_name.split(".")
   end
 #    - create_from_filename
 #    - destroy_all 
