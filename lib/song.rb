@@ -65,7 +65,7 @@ class Song
     song = self.new 
     song.name = name
     song.artist_name = artist_name
-    artist = artist_name.split("-")
+    artist = artist_name.split(" - ")
     song.artist_name = artist[0].chomp(" ")
     song.name = artist[1].chomp(".mp3")
     #song.artist_name
