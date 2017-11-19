@@ -73,17 +73,18 @@ class Song
   end
 #    - create_from_filename
   def self.create_from_filename(artist_name)
-    #initialize a song 
+    #initialize a song and saves song 
     song = self.new
     song.name = name 
     song.artist_name = artist_name 
     self.new_from_filename(artist_name)
-    song
-    # saves a song 
-    
-    
+    # return song
+    song 
   end 
 #    - destroy_all 
+  def self.destroy_all 
+    
+  end
 
 end
 
