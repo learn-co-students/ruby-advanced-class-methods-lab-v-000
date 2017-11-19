@@ -75,6 +75,9 @@ class Song
   def self.create_from_filename(artist_name)
     #initialize a song 
     binding.pry
+    song = self.new
+    song.name = name 
+    aong.artist_name = artist_name 
     self.new_from_filename(artist_name)
     # saves a song 
     
