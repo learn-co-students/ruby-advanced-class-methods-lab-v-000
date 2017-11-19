@@ -61,7 +61,6 @@ class Song
 #    - new_from_filename
   def self.new_from_filename(artist_name)
     # initialize a song
-     
     song = self.new 
     song.name = name
     song.artist_name = artist_name
@@ -71,12 +70,11 @@ class Song
     #song.artist_name
     #song.name
     song
-    #file_format = artist.map do |file_type|
-     # file_type.split("-")
-    #end
-    #file_format
   end
 #    - create_from_filename
+  def self.create_from_filename
+    
+  end 
 #    - destroy_all 
 
 end
