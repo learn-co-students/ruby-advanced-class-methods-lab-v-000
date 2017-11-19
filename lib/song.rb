@@ -61,12 +61,13 @@ class Song
 #    - new_from_filename
   def self.new_from_filename(artist_name)
     # initialize a song
+    binding.pry 
     song = self.new 
     song.name = name
     song.artist_name = artist_name
     artist = artist_name.split("-")
     song.artist_name = artist[0].to_s
-    song.name = artist[1].split(".mp3")
+    song.name = artist[1].replace("For Love I Come")
     #song.artist_name
     #song.name
     song
