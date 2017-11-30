@@ -30,39 +30,39 @@ class Song
   end
 
   def self.find_by_name(name_to_find)
-    Song.all.detect { | song | song.name == name_to_find }
+    self.all.detect { | song | song.name == name_to_find }
   end
 
   def self.find_or_create_by_name(name_to_find)
-    if Song.find_by_name(name_to_find)
-      @song
+    if self.find_by_name(name_to_find)
+      self.find_by_name(name_to_find)
     else
-      Song.create_by_name(name_to_find)
+      self.create_by_name(name_to_find)
     end
   end
 
   def self.alphabetical
     array_of_song_names = []
-    Song.all.sort_by { | song | song.name }
+    self.all.sort_by { | song | song.name }
   end
 
   def self.new_from_filename(filename)
     song_info = filename.split(/[-.]/)
     artist_name = song_info[0].strip
     name = song_info[1].strip
-    @song = Song.new
+    @song = self.new
     @song.artist_name = artist_name
     @song.name = name
     @song
   end
 
   def self.create_from_filename(filename)
-    Song.new_from_filename(filename)
+    self.new_from_filename(filename)
     @song.save
   end
 
   def self.destroy_all
-    Song.all.clear
+    self.all.clear
   end
 
 end
