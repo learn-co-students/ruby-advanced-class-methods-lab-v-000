@@ -44,7 +44,7 @@ class Song
     song_parts = name.split(" - ")
     artist_name = song_parts[0]
     song_name = song_parts[1].gsub(".mp3", "")
-    song = self.create
+    song = self.new
     song.name = song_name
     song.artist_name = artist_name
     song
