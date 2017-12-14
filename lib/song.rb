@@ -21,14 +21,12 @@ class Song
   def self.new_by_name(name)
     new_song = self.new
     new_song.name = name
-    new_song.save
     new_song
   end
 
   def self.create_by_name(name)
-    new_song = self.new
+    new_song = self.create
     new_song.name = name
-    new_song.save
     new_song
   end
 
@@ -46,7 +44,7 @@ class Song
 
   def self.new_from_filename(filename)
     new_song = self.new
-    artist_and_song = filename.split(/\-|\./).map {|artist_song| artist_song.lstrip.rstrip}
+    artist_and_song = filename.split(/\s\-\s|\./)
     new_song.artist_name = artist_and_song[0]
     new_song.name = artist_and_song[1]
     new_song
@@ -54,7 +52,7 @@ class Song
 
   def self.create_from_filename(filename)
     new_song = self.new
-    artist_and_song = filename.split(/\-|\./).map {|artist_song| artist_song.lstrip.rstrip}
+    artist_and_song = filename.split(/\s\-\s|\./)
     new_song.artist_name = artist_and_song[0]
     new_song.name = artist_and_song[1]
     new_song.save
