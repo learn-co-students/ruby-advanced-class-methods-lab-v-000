@@ -23,17 +23,17 @@ class Song
     song
   end
 
-def self.create_by_name(name)
-  new_song = self.new
-  new_song.name = name
-  @@all << new_song
-  new_song
-end
+  def self.create_by_name(name)
+    new_song = self.new
+    new_song.name = name
+    @@all << new_song
+    new_song
+  end
 
-def find_by_name(name)
-  @@all.detect{|song| song.name}
+  def self.find_by_name(name)
+    @@all.detect { |song| song.name == name }
 
-end
+  end
 # Unless executes code if conditional is false - so find or create, if found do nothing. else create.
   def self.find_or_create_by_name(name)
     create_by_name(name) unless find_by_name(name)
@@ -41,8 +41,8 @@ end
   end
 
   def self.alphabetical
-    @@all.sort_by {|song| song.name}
-    
+    @@all.sort_by { |song| song.name }
+
   end
 
 # filename in the format of " - .mp3" Note one regex splits it on the hyphen and the .mp3
