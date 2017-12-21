@@ -35,12 +35,24 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    create_by_name
-    find_by_name
-
+    if self.find_by_name(name)
+      find_by_name(name)
+    else
+      self.create_by_name(name)
+    end
   end
 
   def self.alphabetical
-    self.sort {|a,b| a <=> b}
+
+    @@all.sort_by {|song| song.name}
+
+
+  end
+
+  def self.new_from_filename(name, artist_name)
+    song = self.new_from_filename(name, artist_name)
+    song.name
+    song.artist_name
+
   end
 end
