@@ -16,41 +16,42 @@ class Song
     song
   end
 
-  def self.new_by_name(name)
+  def self.new_by_name(song_name)
     #instantiates the song
     song = self.new
     #assigns song.name to the name put in
-    song.name = name
+    song.name = song_name
     #returns the song
     song
   end
 
-  def self.create_by_name(name)
+  def self.create_by_name(song_name)
     song = self.create
-    song.name = name
+    song.name = song_name
     song
   end
 
-  def self.find_by_name(name)
+  def self.find_by_name(song_name)
     #found_song = nil
     #@@all.each do |song|
       #if song.name == name
         #found_song = song
       #end
     #end
-    @@all.detect {|song| song.name == name}
+    self.all.detect {|song| song.name == song_name}
   end
 
-  def self.find_or_create_by_name(name)
+  def self.find_or_create_by_name(song_name)
     #song = self.find_by_name(name)
     #if song.nil?
       #self.create_by_name(name)
     #end
-    if self.find_by_name(name).nil?
-      self.create_by_name(name)
-    else
-      self.find_by_name(name)
-    end
+    #if self.find_by_name(name).nil?
+      #self.create_by_name(name)
+    #else
+    #  self.find_by_name(name)
+    #end
+    self.find_by_name(song_name) || self.create_by_name(song_name)
   end
 
   def self.alphabetical
