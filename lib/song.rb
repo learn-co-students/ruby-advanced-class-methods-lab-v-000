@@ -1,6 +1,6 @@
 require 'pry'
 class Song
-  attr_accessor :name, :artist_name
+  attr_accessor :name, :artist_name, :filename_format
   @@all = []
 
   def self.all
@@ -46,10 +46,7 @@ class Song
     @@all.sort_by {|song| song.name}
   end
 
-  def self.new_from_filename(name, artist_name)
-    song = self.new_from_filename(name, artist_name)
-    song.name
-    song.artist_name
+  def self.new_from_filename(filename_format)
 
   end
 end
