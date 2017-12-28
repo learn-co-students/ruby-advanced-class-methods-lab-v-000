@@ -1,6 +1,6 @@
 require 'pry'
 class Song
-  attr_accessor :name, :artist_name
+  attr_accessor :name, :artist_name, :filename_format
   @@all = []
 
   def self.all
@@ -46,9 +46,25 @@ class Song
     @@all.sort_by {|song| song.name}
   end
 
-  def self.new_from_filename(filename_format)
-    song = self.new
-    song.name=(filename_format)
-      song
+  def self.new_from_filename(attribute)
+    artist, song = attribute.split(' - ')
+    new_song = song.gsub('.mp3', '')
+
+    song = create_by_name(new_song)
+    song.artist_name = artist
+    song
+  end
+
+  def self.create_from_filename(attribute)
+    artist, song = attribute.split(' - ')
+    new_song = song.gsub('.mp3', '')
+
+    song = create_by_name(new_song)
+    song.artist_name = artist
+    song
+  end
+
+  def self.destroy_all
+    self.all.clear
   end
 end
