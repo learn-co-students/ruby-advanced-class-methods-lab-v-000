@@ -1,6 +1,6 @@
 require 'pry'
 class Song
-  attr_accessor :name, :artist_name, :filename_format
+  attr_accessor :name, :artist_name
   @@all = []
 
   def self.all
@@ -47,6 +47,8 @@ class Song
   end
 
   def self.new_from_filename(filename_format)
-
+    song = self.new
+    song.name=(filename_format)
+      song
   end
 end
