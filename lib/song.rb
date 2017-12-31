@@ -26,4 +26,29 @@ class Song
     self.new_by_name(n)
     @song.save.last
   end
+
+  def self.find_by_name(n)
+    @@all.detect { |song| song.name == n}
+  end
+
+  def self.find_or_create_by_name(name)
+    
+    if self.find_by_name(name) != nil
+      self.find_by_name(name)
+    else
+      self.create_by_name(name)
+    end    
+  end
+
+  def self.alphabetical
+    @@all.sort_by { |song| song.name}
+  end
+
+  def self.new_from_filename(file)
+    artist = file.split("-")[0].delete(" ")
+    name = file.split("-")[1].split(".")[0].lstrip
+    @song = self.new_by_name(name)
+    @song.artist_name = artist
+    @song
+  end
 end
