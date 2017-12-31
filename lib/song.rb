@@ -45,10 +45,22 @@ class Song
   end
 
   def self.new_from_filename(file)
-    artist = file.split("-")[0].delete(" ")
-    name = file.split("-")[1].split(".")[0].lstrip
-    @song = self.new_by_name(name)
-    @song.artist_name = artist
-    @song
+    @artist = file.split("-")[0].delete(" ")
+    @name = file.split("-")[1].split(".")[0].lstrip
+    song = self.new_by_name(@name)
+    song.artist_name = @artist
+    song
+  end
+
+  def self.create_from_filename(file)
+    @artist
+    @name
+    song = self.create_by_name(@name)
+    song.artist_name = @artist
+    song
+  end
+
+  def self.destroy_all
+    @@all.clear
   end
 end
