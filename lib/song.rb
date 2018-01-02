@@ -44,10 +44,22 @@ class Song
     @@all.sort_by {|song| song.name}
   end
 
-  def self.new_from_filename(file_name)
+  def self.new_from_filename(filename)
+    artist, song = filename.split(' - ')
+    new_song = song.gsub('.mp3', '')
+
+    song = new_by_name(new_song)
+    song.artist_name = artist
+    song
   end
 
-  def create_from_filename(file_name)
+  def self.create_from_filename(filename)
+    artist, song = filename.split(' - ')
+    new_song = song.gsub('.mp3', '')
+
+    song = create_by_name(new_song)
+    song.artist_name = artist
+    song
   end
 
   def self.destroy_all
