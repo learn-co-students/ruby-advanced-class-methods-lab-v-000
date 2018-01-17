@@ -18,7 +18,7 @@ class Song
       # through class method @Song.all
     # return the song instance
 
-    self.all << self.new
+    self.new.save
     self.all.last
   end
 
@@ -47,21 +47,16 @@ class Song
     #class finder
     # input: string name
     # output: matching instance
-    self.all.each do |song|
-      return song if song.name == name
-    end
-    return nil
+    self.all.detect {|song| song.name == name}
+
   end
 
   def self.find_or_create_by_name(name)
-    if self.find_by_name(name) == nil
-      self.create_by_name(name)
-    else self.find_by_name(name)
-    end
+    self.find_by_name(name) || self.create_by_name(name)
   end
 
   def self.alphabetical
-    self.all.sort_by {|song| song.name[0]}
+    self.all.sort_by {|song| song.name}
   end
 
   def self.parse(filename)
