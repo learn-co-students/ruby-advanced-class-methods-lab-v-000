@@ -31,7 +31,7 @@ The `Song` class provides a class variable `@@all` to store all instances for `S
 
 You have to build class methods that interact on the class data of `@@all` and provide the rest of our program with a semantic API on the `Song` class with methods such as `Song.find_or_create_by_name("Blank Space")`.
 
-### `Song.create`
+<!-- ### `Song.create`
 
 Build a class constructor `Song.create` that initializes a song and saves it to the `@@all` class variable either literally or through the class method `Song.all`. This method should return the song instance that was initialized and saved.
 
@@ -77,9 +77,9 @@ the_middle = Song.create_by_name("The Middle")
 
 Song.find_by_name("The Middle")
 #<Song @name="The Middle">
-```
+``` -->
 
-### `Song.find_or_create_by_name`
+<!-- ### `Song.find_or_create_by_name`
 
 In order to prevent duplicate songs being created that actually represent the same song (based on the song name), we're going to build a `Song.find_or_create_by_name` class method. This method will accept a string name for a song and either return a matching song instance with that name or create a new song with the name and return the song instance.
 
@@ -110,14 +110,14 @@ Given `Song.new_from_filename("Taylor Swift - Blank Space.mp3")`, the constructo
 song = Song.new_from_filename("Taylor Swift - Blank Space.mp3")
 song.name #=> "Blank Space"
 song.artist_name #=> "Taylor Swift"
-```
+``` -->
 
 ### `Song.create_from_filename`
 
 Build a class constructor that accepts a filename in the format of "<Artist Name> - <Song Name>.mp3", for example "Taylor Swift - Blank Space.mp3". The `Song.create_from_filename` class method should not only parse the filename correctly but should also save the Song instance that was created.
 
-### `Song.destroy_all`
+<!-- ### `Song.destroy_all`
 
 The `Song.destroy_all` class method should reset the state of the `@@all` class variable to an empty array thereby deleting all previous song instances.
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/ruby-advanced-class-methods-lab' title='Ruby Advanced Class Methods Lab'>Ruby Advanced Class Methods Lab</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/ruby-advanced-class-methods-lab' title='Ruby Advanced Class Methods Lab'>Ruby Advanced Class Methods Lab</a> on Learn.co and start learning to code for free.</p> -->
