@@ -32,9 +32,9 @@ describe "Song Class Methods" do
       song_1 = Song.create_by_name("Blank Space")
       song_2 = Song.create_by_name("Hello")
       song_3 = Song.create_by_name("Hotline Bling")
-
       expect(Song.find_by_name("Hello")).to eq(song_2)
     end
+
   end
 
   describe '.find_or_create_by_name' do
