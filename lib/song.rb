@@ -1,5 +1,3 @@
-require "pry"
-
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -45,25 +43,15 @@ class Song
     else
       creation
     end
-    # self.create_by_name(name) unless match
-    #
-    # # @name = name
-    # if @@all.find_by_name(name) == name
-    #   @@all.find_by_name(name)
-    #   # self
-    # else
-    #
-    # end
   end
 
   def self.alphabetical
     @@all.each do |instance|
-          # binding.pry
       @@all_names << instance.name
     end
 
-    @@all_names.sort
-    @@all_names.each do |name|
+    sorted_names = @@all_names.sort { |a, b| a <=> b }
+    sorted_names.each do |name|
       @@alpha << self.find_by_name(name)
     end
     @@alpha
@@ -90,8 +78,3 @@ class Song
   end
 
 end
-
-s = Song.create_by_name("Mandy")
-t = Song.create_by_name("Copa")
-puts "hello"
-puts s.name
