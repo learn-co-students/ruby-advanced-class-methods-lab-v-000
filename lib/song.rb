@@ -52,14 +52,22 @@ class Song
     song_file = row[1].split(".") # ["Blank Space", "mp3"]
     song_name = song_file[0]
 
-    song = self.create
+    song = self.new
     song.name = song_name
     song.artist_name = artist_name
     song
   end
 
   def self.create_from_filename(filename)
-    self.all << new_from_filename(filename)
+    row = filename.split(" - ") # ["Taylor Swift", "Blank Space.mp3"]
+    artist_name = row[0]
+    song_file = row[1].split(".") # ["Blank Space", "mp3"]
+    song_name = song_file[0]
+
+    song = self.create
+    song.name = song_name
+    song.artist_name = artist_name
+    song
   end
 
   def self.destroy_all
