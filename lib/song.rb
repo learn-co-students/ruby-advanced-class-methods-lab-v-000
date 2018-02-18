@@ -40,7 +40,14 @@ class Song
   end
 
   def self.alphabetical
+      self.all.sort_by {|instance| instance.name}
+  end
 
+  def self.new_from_filename(filename)
+    arr = filename.split("-")
+    name = arr[0]
+    temp = arr[1]
+    artist = temp[0...-4]
   end
 
 end
