@@ -41,9 +41,33 @@ class Song
     end
   end
 
-  # def self.find_or_create_by_name(name)
-  #   @@all.detect{|person| person.name == name}
-  # end
+  def self.alphabetical
+    self.all.sort_by { |song_title| song_title.name }
+  end
+
+  def self.new_from_filename(all)
+    song = self.new
+      song_data = all.split(" - ")
+        artist_name = song_data[0]
+        name = song_data[1].chomp(".mp3")
+        song.artist_name = artist_name
+        song.name = name
+        song
+      end
+
+
+    def self.create_from_filename(all)
+      song = self.new
+        song_data = all.split(" - ")
+          artist_name = song_data[0]
+          name = song_data[1].chomp(".mp3")
+          song.artist_name = artist_name
+          song.name = name
+          self.all << song
+      end
+
+
+
 
 
   def self.destroy_all
