@@ -19,7 +19,7 @@ class Song
   def self.new_by_name(song_name)
     song = self.new
     song.name = song_name
-    @@all << song
+    song.save
     song
   end
   
@@ -63,7 +63,7 @@ class Song
   end
   
   def self.destroy_all
-    @@all.clear
+    self.all.clear
   end
   
 end
