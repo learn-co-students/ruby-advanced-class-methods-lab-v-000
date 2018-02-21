@@ -29,6 +29,9 @@ class Song
     song
   end
 
-  
+  def self.find_by_name(name)
+    @@all.detect do |song_name| if song_name == name
+      binding.pry
+  end
 
 end
