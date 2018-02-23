@@ -14,7 +14,7 @@ class Song
   end
 
   def self.create
-    song = Song.new
+    song = self.new
     song.save
     song
   end
@@ -27,7 +27,7 @@ class Song
 
 
   def self.create_by_name(name)
-    song = Song.create
+    song = self.create
     song.name = name
     song
   end
@@ -46,19 +46,44 @@ class Song
      end
   end
 
+  #same as
+
+  # def self.find_or_create_by_name(name)
+  #     self.find_by_name(name) || self.create_by_name(name)
+  # end
+
   def self.alphabetical
     @@all.sort_by {|obj| obj.name}
+    #same as
+    # self.all.sort_by(&:name)
   end
 
   def self.new_from_filename(filename)
-    split_filename = filename.split("-")
-    @name = split_filename[1]
-    @artist_name = split_filename[0]
-    # binding.pry
-    Song.new
-    #i fucking give up
+    # split_filename = filename.split("-")
+    # @name = split_filename[1]
+    # @artist_name = split_filename[0]
+    # # binding.pry
+    # Song.new
+    # #i fucking give up
+
+    song = self.new
+    split_filename = filename.chomp(".mp3").split(" - ")
+    song.name = split_filename[1]
+    song.artist_name = split_filename[0]
+    song
   end
 
-  # end
+
+  def self.create_from_filename(filename)
+    song = self.create
+    split_filename = filename.chomp(".mp3").split(" - ")
+    song.name = split_filename[1]
+    song.artist_name = split_filename[0]
+    song
+  end
+
+  def self.destroy_all
+    self.all.clear
+  end
 
 end
