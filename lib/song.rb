@@ -25,29 +25,34 @@ class Song
   end
 
   def self.create_by_name(name)
-    song = self.new
+  # My original code below. Realizing that the code could be completed
+  # song = self.new
+  #  song.save
+    song = self.create
     song.name = name
-    song.save
     song
   end
 
   def self.find_by_name(song_name)
-    #binding.pry
-    self.all.each do |song|
-      return song if song.name == song_name
-    end
-    nil
-    #binding.pry
-    #self.all.select {|song| song.name == song_name}
+
+    self.all.detect {|song| song.name == song_name}
+    # note* tried to use .select, but using .detect -  Enumerable - is more efficient
+    #self.all.each do |song|
+    #  return song if song.name == song_name
+    #end
+
   end
 
 
   def self.find_or_create_by_name(name)
-      if self.find_by_name(name) == nil
-        self.create_by_name(name)
-      else
-        self.find_by_name(name)
-      end
+
+    self.find_by_name(name) || self.create_by_name(name)
+    # Below is the orginal code, can be made more abstract by code above
+    #  if self.find_by_name(name) == nil
+    #    self.create_by_name(name)
+    #  else
+    #    self.find_by_name(name)
+    #  end
   end
 
 
@@ -78,6 +83,6 @@ class Song
   end
 
   def self.destroy_all
-    @@all.clear    
+    @@all.clear
   end
 end
