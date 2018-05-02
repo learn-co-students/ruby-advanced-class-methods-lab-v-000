@@ -13,43 +13,36 @@ class Song
   
   def self.create 
     mysong = self.new
-    @@all << mysong
+    mysong.save
     mysong
   end 
   
   def self.new_by_name(song_name)
     mysong = self.new 
     mysong.name = song_name
-    mysong.save
     mysong
   end 
   
   def self.create_by_name(song_name)
-    mysong = self.new
+    mysong = self.create
     mysong.name = song_name
-    mysong.save
-    #binding.pry
+    #mysong.save
     mysong
   end 
   
   def self.find_by_name(song_name)
-    songis = []
+    song_is = []
     
     @@all.each{ |song_names|
       if song_names.name == song_name
-        songis = song_names
+        song_is = song_names
       end 
     }
-    songis
+    song_is
   end 
   
   def self.find_or_create_by_name(song_name)
-    if self.find_by_name(song_name) 
-       self.find_by_name(song_name)
-    else 
-       self.new_by_name(song_name) 
-       #binding.pry 
-    end 
+    self.find_by_name(song_name) || self.create_by_name(song_name)
   end 
   
   def self.alphabetical
@@ -72,8 +65,7 @@ class Song
     mysong = self.new
     mysong.name = song_name
     mysong.artist_name = artist_name
-    
-    @@all << mysong
+    mysong.save
     mysong
   end 
   
@@ -87,9 +79,6 @@ class Song
     arr2 = arr1[1].split(".")
     song_name = arr2[0]
     
-    puts artist_name
-    puts song_name
-    
     song_new = self.new 
     song_new.name = song_name
     song_new.artist_name = artist_name
@@ -98,7 +87,7 @@ class Song
   end 
   
   def self.destroy_all
-    @@all = []
+    self.all.clear
   end 
   
 end
