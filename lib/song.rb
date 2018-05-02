@@ -4,7 +4,7 @@ class Song
   @@all = []
   
   def self.all
-    @@all
+     @@all
   end
 
   def save
@@ -24,21 +24,13 @@ class Song
   end 
   
   def self.create_by_name(song_name)
-    mysong = self.create
-    mysong.name = song_name
-    #mysong.save
-    mysong
+    mysong1 = self.create
+    mysong1.name = song_name
+    mysong1
   end 
   
   def self.find_by_name(song_name)
-    song_is = []
-    
-    @@all.each{ |song_names|
-      if song_names.name == song_name
-        song_is = song_names
-      end 
-    }
-    song_is
+    @@all.detect{|song_names| song_names.name == song_name}
   end 
   
   def self.find_or_create_by_name(song_name)
