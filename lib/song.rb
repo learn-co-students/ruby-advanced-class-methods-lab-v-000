@@ -39,14 +39,32 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    is_it_there = self.find_by_name
-      if is_it_there == nil
-        self.create_by_name
-      else
-        is_it_there
-      end
+    is_there = self.find_by_name(name)
+    if is_there == nil
+      self.create_by_name(name)
+    else
+      is_there
+    end
   end
 
+  def self.alphabetical
+     self.all.sort_by { |x| x.name}
+   end
+
+   def self.new_from_filename(name_with_mp3)
+     s = self.new
+     s.name = name_with_mp3.split(/[^a-zA-Z\s]|\s-\s/)[1]
+     s.artist_name = name_with_mp3.split(/[^a-zA-Z\s]|\s-\s/)[0]
+     s
+   end
+
+   def self.create_from_filename(name_with_mp3)
+     ii = self.new
+     ii.name = name_with_mp3.split(/[^a-zA-Z\s]|\s-\s/)[1]
+     ii.artist_name = name_with_mp3.split(/[^a-zA-Z\s]|\s-\s/)[0]
+     ii.save
+     ii
+   end
 
 
   def self.destroy_all
