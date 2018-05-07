@@ -12,12 +12,8 @@ class Song
     self.class.all << self
   end
 
-  # self.create is a class method
   def self.create
-    # self.new is the same as saying Song.new.
-    # self refers to the class (since it's inside a class method)
     song = self.new
-    # it is being saved by calling the instance method 'song' above
     song.save
     song
   end
@@ -35,7 +31,6 @@ class Song
   end
 
   def self.find_by_name(song_name)
-    # returns matching song instance
     self.all.detect { |song| song.name == song_name }
   end
 
