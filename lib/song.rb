@@ -69,4 +69,9 @@ class Song
   def self.destroy_all
     @@all.clear
   end
+    
+  def self.new_From_filename(mp3Name)
+    mp3name.split("-").slice! "mp3"
+    
+  end
 end
