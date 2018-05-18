@@ -68,7 +68,8 @@ def self.create_from_filename(data)
 end
 #destroy_all
 def self.destroy_all
-      @@all = [ ]
+      # @@all = [ ]
+      self.all.clear
 end
 
 end
