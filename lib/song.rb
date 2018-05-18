@@ -5,10 +5,6 @@ class Song
   def self.all
     @@all
   end
-  def self.all(n)
-    @@all = n
-  end
-
 
   def save
     self.class.all << self
@@ -72,9 +68,7 @@ def self.create_from_filename(data)
 end
 #destroy_all
 def self.destroy_all
-  #  @@all = [ ]
-    n = []
-    self.all(n)
+      @@all = [ ]
 end
 
 end
