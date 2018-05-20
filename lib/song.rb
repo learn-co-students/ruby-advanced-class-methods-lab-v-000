@@ -1,8 +1,8 @@
 require 'pry'
 +
  class Song	 class Song
-   attr_accessor :name, :artist_name	   attr_accessor :name, :artist_name
-   @@all = []	   @@all = []
+   attr_accessor :name, :artist_name	 
+   @@all = []	   
 
     
     def save
@@ -69,4 +69,5 @@ require 'pry'
      song.save
      song
   end
+end
 end
