@@ -25,45 +25,7 @@ class Song
 
 end
 
-```
 
-The `Song` class provides a class variable `@@all` to store all instances for `Song` that are created through the instance method `Song#save`. Additionally, `Song` instances have basic properties of a name and an artist name.
-
-You have to build class methods that interact on the class data of `@@all` and provide the rest of our program with a semantic API on the `Song` class with methods such as `Song.find_or_create_by_name("Blank Space")`.
-
-### `Song.create`
-
-Build a class constructor `Song.create` that initializes a song and saves it to the `@@all` class variable either literally or through the class method `Song.all`. This method should return the song instance that was initialized and saved.
-
-Consider:
-
-```ruby
-song = Song.create
-Song.all.include?(song) #=> true
-```
-
-### `Song.new_by_name`
-
-Build a class constructor `Song.new_by_name` that takes in the string name of a song and returns a song instance with that name set as its name property. `Song.new_by_name` should return an instance of `Song` and not a simple string or anything else. Implement the following functionality:
-
-```ruby
-song = Song.new_by_name("The Middle")
-#=> #<Song @name="The Middle">
-song.name #=> "The Middle"
-```
-
-### `Song.create_by_name`
-
-Build a class constructor `Song.create_by_name` that takes in the string name of a song and returns a song instance with that name set as its name property and the song being saved into the `@@all` class variable.
-
-Consider:
-
-```ruby
-song = Song.create_by_name("The Middle")
-#=> #<Song:0x007fd2a2989ff0 @name="The Middle">
-song
-#=> #<Song:0x007fd2a2989ff0 @name="The Middle">
-Song.all.include?(song)
 #=> true
 ```
 
@@ -71,7 +33,7 @@ Song.all.include?(song)
 
 Build a class finder `Song.find_by_name` that accepts the string name of a song and returns the matching instance of the song with that name. Consider:
 
-```ruby
+ruby
 the_middle = Song.create_by_name("The Middle")
 #=> #<Song @name="The Middle">
 
