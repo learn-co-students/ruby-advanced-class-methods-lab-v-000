@@ -64,12 +64,16 @@ class Song
     self.all.pop
   end
 
-  def self.create_from_filename
+  def self.create_from_filename(string)
+    musician = string.match(/.+\b -/).to_s[0...-2]
+    title = string.match(/- .+.mp3/i).to_s[2...-4]
+    new.scope_title(title, musician)
+    self.all[-1]
   end
 
-  #def self.destroy_all
-  #end
-
+  def self.destroy_all
+    @@all.clear
+  end
 end
 
 
