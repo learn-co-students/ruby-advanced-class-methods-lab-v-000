@@ -27,13 +27,10 @@ class Song
     self.all.detect {|i| i.name == string_name_of_the_song}
   end
   
-  def self.find_or_create_by_name(find_this_song)
-    did_i_find_it = self.all.detect {|x| x.name == find_this_song}
-      self.find_by_name(name) 
-    else
-      self.create_by_name
-    end
-  end 
+  def self.find_or_create_by_name(string_name_of_the_song)
+    self.find_by_name(string_name_of_the_song)||self.create_by_name(string_name_of_the_song)
+  end
+  
 
   def self.alphabetical
     self.all.sort_by { |x| x.name}
@@ -66,7 +63,7 @@ class Song
     self.all.clear
   end
  
-end
+
 
 zaza = Song.create
 zaza.name = "Sugar Zaza"
@@ -139,4 +136,4 @@ song9.artist_name #=> "Nancy Ajram"
      song
   end
 
-
+end
