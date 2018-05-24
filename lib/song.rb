@@ -35,33 +35,30 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    if self.find_by_name(name)
-      self.find_by_name(name)
-    else
-      self.create_by_name(name)
-    end
+    self.find_by_name(name) || self.create_by_name(name)
   end
 
   def self.alphabetical
-    song_name_array = @@all.collect { |song| song.name }
-    song_name_array.sort.collect { |song_name| self.find_by_name(song_name) }
+    self.all.sort_by { |song| song.name }
   end
 
   def self.new_from_filename(filename)
-    new_song = self.new
     clean_song = filename
     clean_song[".mp3"]= ""
     song_array = clean_song.split(" - ")
+
+    new_song = self.new
     new_song.artist_name = song_array[0]
     new_song.name = song_array[1]
     new_song
   end
 
   def self.create_from_filename(filename)
-    new_song = self.create
     clean_song = filename
     clean_song[".mp3"]= ""
     song_array = clean_song.split(" - ")
+    
+    new_song = self.create
     new_song.artist_name = song_array[0]
     new_song.name = song_array[1]
     new_song
