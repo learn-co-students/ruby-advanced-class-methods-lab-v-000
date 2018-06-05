@@ -3,13 +3,13 @@ class Song
   @@all = []
 
   def self.create
-    song = self.new;
+    song = Song.new;
     song.save;
     song;
   end
 
   def self.new_by_name(name)
-    song = self.create;
+    song = self.new;
     song.name = name;
     song;
   end
@@ -21,7 +21,7 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    Song.find_by_name(name) ? Song.find_by_name(name) : Song.create_by_name(name);
+    Song.find_by_name(name) || Song.create_by_name(name);
   end
 
   def self.new_from_filename(file_name)
@@ -46,7 +46,7 @@ class Song
   end
 
   def self.alphabetical
-    @@all.sort_by {|song| song.name};
+    self.all.sort_by {|song| song.name};
   end
 
   def self.find_by_name(name)
