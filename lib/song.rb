@@ -42,4 +42,16 @@ class Song
     else self.find_by_name(name)
     end
   end
+
+  def self.alphabetical
+    self.all.sort_by { |song| song.name }
+  end
+
+  def self.new_from_filename(file_name)
+    song = Song.new
+    file_name_array = file_name.split(/[-.]/)
+    song.artist_name = file_name_array[0].strip
+    song.name = file_name_array[1].strip
+    song
+  end
 end
