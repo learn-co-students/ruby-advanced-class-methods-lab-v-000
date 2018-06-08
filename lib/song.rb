@@ -50,4 +50,27 @@ class Song
     self.all.sort_by { |song| song.name }
   end
 
+  def self.destroy_all
+    @@all = []
+  end
+
+  def self.new_from_filename(filename)
+    filename.slice! ".mp3"
+    filename = filename.split(' - ')
+    song = self.new
+    song.name = filename[1]
+    song.artist_name = filename[0]
+    return song
+  end
+
+  def self.create_from_filename(filename)
+    filename.slice! ".mp3"
+    filename = filename.split(' - ')
+    song = self.new
+    song.name = filename[1]
+    song.artist_name = filename[0]
+    self.all << song
+    return song
+  end
+
 end
