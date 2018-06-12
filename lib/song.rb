@@ -1,5 +1,4 @@
 require 'pry'
-
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -12,56 +11,54 @@ class Song
     self.class.all << self
   end
 
-  def self.create #self referes to the class. this is a class method
-    song = Song.new
-    song.save
+  def self.create
+    song = self.new
+    @@all << song
     song
   end
 
   def self.new_by_name(name)
-    song = Song.new
+    song = self.new
     song.name = name
     song
   end
 
   def self.create_by_name(name)
-    song = Song.new_by_name(name)
+    song = self.new_by_name(name)
     song.save
     song
   end
 
   def self.find_by_name(name)
-    self.all.detect do |song|
-      song.name == name
-    end
+    self.all.find {|song| song.name == name}
   end
 
   def self.find_or_create_by_name(name)
-    if self.find_by_name(name) == nil
+    if self.find_by_name(name)
+      self.find_by_name(name)
+    else
       self.create_by_name(name)
-    else self.find_by_name(name)
     end
   end
 
   def self.alphabetical
-    self.all.sort_by { |song| song.name }
+    self.all.sort_by { |song| song.name}
   end
 
-  def self.new_from_filename(file_name)
-    song = Song.new
-    file_name_array = file_name.split(/[-.]/)
-    song.artist_name = file_name_array[0].strip
-    song.name = file_name_array[1].strip
+  def self.new_from_filename(filename)
+    song_data = filename.split(' - ')
+    name = song_data[1].chomp(".mp3")
+    artist = song_data[0]
+    song = self.new_by_name(name)
+    song.artist_name = artist
     song
   end
 
-  def self.create_from_filename(file_name)
-    song = Song.new_from_filename(file_name)
-    song.save
-    song
+  def self.create_from_filename(filename)
+    self.new_from_filename(filename).save
   end
 
   def self.destroy_all
-    @@all = []
+    self.all.clear
   end
 end
