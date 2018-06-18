@@ -46,7 +46,7 @@ class Song
     filearray = filename.split("-")
     song = self.new
     song.name = filearray[1].split(".")[0].lstrip
-    song.artist_name = filearray[0].chop
+    song.artist_name = filearray[0].rstrip
     song
   end
   
