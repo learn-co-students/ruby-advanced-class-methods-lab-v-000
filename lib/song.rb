@@ -27,7 +27,12 @@ class Song
   def self.create_by_name(string_of_song_name)
     song = self.new
     song.name = string_of_song_name
-    song
+    @@all << song
+  end
+
+  def self.find_by_name(string_of_song_name)
+    self.all.detect do {|song| song.name == string_of_song_name}
+    end
   end
 
 end
