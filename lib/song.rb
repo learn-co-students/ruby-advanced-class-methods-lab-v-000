@@ -22,7 +22,7 @@ class Song
   end
 
   def self.find_by_name(name)
-    @@all.each do |song|
+    @@all.detect do |song|
       if song.name == name
         return song
       end
@@ -57,13 +57,9 @@ def self.create_from_filename(filename)
   song
 end
 
-def self.destroy_all
+  def self.destroy_all
     self.all.clear
   end
-
-
-
-
 
   def self.all
     @@all
