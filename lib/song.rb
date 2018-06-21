@@ -26,16 +26,15 @@ class Song
   end
   
   def self.create_by_name(string_of_song_name)
-    song = self.new
+    song = self.create
     song.name = string_of_song_name
-    @@all << song
+    song
   end
 
   def self.find_by_name(string_of_song_name)
     self.all.detect do |song| 
       song.name == string_of_song_name
     end
-    find_by_name[]
   end
   
   def self.find_or_create_by_name(find_this_song)
@@ -50,7 +49,7 @@ class Song
     end
   end
   
-  def self.alphabetical
+  def self.alphabetical()
     self.all.sort_by {|song| song.name}
   end
   
@@ -68,11 +67,6 @@ class Song
     new_mp3.artist_name = mp3_formatted_file.split(/[^a-zA-Z\s]|\s-\s/)[0]
     new_mp3.save
     new_mp3
-  end
-
-  def self.create_from_filename(mp3_formatted_file)
-    
-  
   end
   
   def self.destroy_all
