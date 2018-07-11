@@ -16,7 +16,7 @@ class Song
   # create new instance, shovel into @@all, and return new instance
   def self.create
     new_song = self.new
-    self.all << new_song
+    new_song.save
     new_song
   end
   
@@ -30,7 +30,7 @@ class Song
   # create new instance, change its name, shovel into @@all return new song
   def self.create_by_name(name)
     new_song = self.new_by_name(name)
-    self.all << new_song 
+    new_song.save 
     new_song
   end
   
@@ -65,7 +65,7 @@ class Song
   
   def self.create_from_filename(file_name)
     new_song = self.new_from_filename(file_name)
-    self.all << new_song
+    new_song.save
     new_song
   end
   
