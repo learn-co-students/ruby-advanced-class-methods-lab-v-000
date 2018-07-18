@@ -9,8 +9,11 @@ class Song
   end
 
   def save
-    #why do you need the .class next to the self? why can't you just go @all << self?
+    #why do you need the .class next to the self? why can't you just go @all << self? Again, resusability
+    #self.all would give us an error because we are inside an instance method, so self refers to instance.
+    #So we have to explicitly call the class
     self.class.all << self
+    #@@all << self will have the same result
   end
 
 
