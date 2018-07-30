@@ -3,11 +3,6 @@ class Song
   attr_accessor :name, :artist_name
   @@all = []
 
-  # def initialize
-  #   @@create
-  #
-  # end
-
   def self.all
     @@all
   end
@@ -67,16 +62,10 @@ class Song
     song
   end
 
-   def self.create_from_filename(filename)
-    #initializes and saves a song and artist_name based on the filename
-    parts = filename.split(" - ")
-    artist_name = parts[0]
-    song_name = parts[1].gsub(".mp3", "")
+  # take  #self.new_from_filename and utilize in this method, but add the #save method also.
+  def self.create_from_filename(filename)
+    self.new_from_filename(filename).save
 
-    song = self.create
-    song.name = song_name
-    song.artist_name = artist_name
-    song
   end
 
   def self.destroy_all
