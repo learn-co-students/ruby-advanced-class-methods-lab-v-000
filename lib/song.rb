@@ -9,5 +9,7 @@ class Song
   def save
     self.class.all << self
   end
-
+  def self.create(song)
+    @@all.find{|blank| blank.name == song}
+  end
 end
