@@ -32,7 +32,7 @@ class Song
     self.all.find {|name| name.name == song_name} #returns the song_name whenever it finds a match in the array
   end
 
-  def self.find_or_create_by_name
+  def self.find_or_create_by_name(song_name)
   end
 
   def self.alphabetical
