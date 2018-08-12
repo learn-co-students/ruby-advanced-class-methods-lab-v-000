@@ -42,5 +42,16 @@ class Song
   def self.alphabetical
     self.all.sort_by {|alphabetical|alphabetical.name.downcase}
   end
+  
+  def self.new_from_filename(filename)
+      data = filename.split(/[-||.]/).map(&:strip)
+      song = self.new
+      song.artist_name = data[0]
+      song.name = data[1]
+      
+      song
+    
+   
+  end    
 
 end
