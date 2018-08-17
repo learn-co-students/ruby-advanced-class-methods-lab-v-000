@@ -29,10 +29,15 @@ class Song
   end
   
    def self.find_by_name(song_name)
-    song = self.find
+    song = self.new
     song.name = song_name
-    song
+    @@all.each do |the_song|
+      if the_song == song_name
+        the_song
+      end
+      song
   end
+end
 
 end
 
