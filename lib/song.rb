@@ -44,14 +44,25 @@ class Song
   end
   
   def self.new_from_filename(mp3_song)
-  binding.pry
-  artist = song.artist_name
-  song = song.name
+  song = self.new
+  song_wo_mp3 = ""
+  x = mp3_song.split(" - ")
+  y = x[1].gsub(".mp3", "")
+  song.artist_name = x[0]
+  song_wo_mp3 << y
+  song.name = song_wo_mp3
   song
   end
   
   def self.create_from_filename(mp3_song)
-  
+  song = self.create
+  song_wo_mp3 = ""
+  x = mp3_song.split(" - ")
+  y = x[1].gsub(".mp3", "")
+  song.artist_name = x[0]
+  song_wo_mp3 << y
+  song.name = song_wo_mp3
+  song
   end
   
   def self.destroy_all
