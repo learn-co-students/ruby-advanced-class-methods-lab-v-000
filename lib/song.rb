@@ -40,9 +40,8 @@ class Song
     @@all.detect{|song| song.name == name}
   end
 
-  def self.find_or_create_by_name(name) #creates a new song based the create_by_name method and then finds it using find_by_name
-    self.create_by_name(name)
-    self.find_by_name(name)
+  def self.find_or_create_by_name(name) #creates a new song if there isnt a match found
+    self.find_by_name(name) ? self.find_by_name(name) : self.create_by_name(name)
   end
 
   def self.alphabetical #sorts the class variable by song name in alphabetical order
