@@ -26,8 +26,8 @@ class Song
 
   def self.create_by_name(name)
     song = self.new
-    @@all << song
     song.name = name
+    @@all << song
     song
   end
 
@@ -41,12 +41,6 @@ class Song
     else
       find_by_name(name)
     end
-
-  #  if self.all.include?(name) == false
-  #    self.create_by_name(name)
-  #  else
-  #    self.find_by_name(name)
-  #  end
   end
 
   def self.alphabetical
