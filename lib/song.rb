@@ -17,6 +17,7 @@ class Song
     song
   
   end
+<<<<<<< HEAD
 
   def self.new_by_name(s_name)
     song = self.new
@@ -37,6 +38,28 @@ class Song
     
   end
 
+=======
+
+  def self.new_by_name(s_name)
+    song = self.new
+    song.name = s_name
+    song
+    #remember to recall your updated instantiated object
+  end  
+  
+  def self.create_by_name(s_name)
+    song = self.new
+    song.name = s_name 
+    @@all << song #saves
+    song
+  end  
+  
+  def self.find_by_name(s_name)
+    @@all.find {|song_in_all| song_in_all.name == s_name}
+    
+  end
+
+>>>>>>> bb133d8aded77343aaee1b2377264d720657300b
   def self.find_or_create_by_name(s_name)
     create_by_name(s_name)
     find_by_name(s_name)
@@ -52,6 +75,7 @@ class Song
     song_parts = s_name_ext.split("- ")
     song.name = song_parts[1].chomp(".mp3")
     song.artist_name = song_parts[0].chomp(" ")
+<<<<<<< HEAD
     song
     #REMEMBER TO CALL IT AGAIN
   end
@@ -59,13 +83,17 @@ class Song
   def self.create_from_filename(s_name_ext)
     song = self.new
     song_parts = s_name_ext.split("- ")
-    @name = song_parts[1].chomp(".mp3")
-    @artist_name = song_parts[0].chomp(" ")
+    song.name = song_parts[1].chomp(".mp3")
+    song.artist_name = song_parts[0].chomp(" ")
     @@all << song #saves
     song
   end
   
   def self.destroy_all
     @@all = []
+=======
+   
+    
+>>>>>>> bb133d8aded77343aaee1b2377264d720657300b
   end
 end
