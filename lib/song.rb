@@ -59,8 +59,8 @@ class Song
   def self.create_from_filename(s_name_ext)
     song = self.new
     song_parts = s_name_ext.split("- ")
-    song.name = song_parts[1].chomp(".mp3")
-    song.artist_name = song_parts[0].chomp(" ")
+    @name = song_parts[1].chomp(".mp3")
+    @artist_name = song_parts[0].chomp(" ")
     @@all << song #saves
     song
   end
