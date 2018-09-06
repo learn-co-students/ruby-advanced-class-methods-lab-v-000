@@ -1,6 +1,6 @@
 # Ruby Advanced Class Methods Lab
 
-## Objectives
+## Objectiveshttps://learn.co/tracks/full-stack-web-development-v6/object-oriented-ruby/object-models/advanced-class-methods-lab#
 
 1. Build custom class constructors.
 2. Build class finders.
