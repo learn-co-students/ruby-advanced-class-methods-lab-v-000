@@ -10,21 +10,12 @@ class Song
     self.class.all << self
   end
 
-  def create(song)
-    def initialize
-      @@all << self.class.new
-    end
+  def self.create
+    @@all << self.class.new(@name)
   end
 
 
 
-
-
-  def new_byName(name)
-    if @@all.include?(name)
-      return @@all.Song.name
-    end
-  end
 
 
 
