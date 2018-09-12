@@ -22,7 +22,7 @@ class Song
 
   def new_byName(name)
     if @@all.include?(name)
-      return name
+      return @@all.Song.name
     end
   end
 
