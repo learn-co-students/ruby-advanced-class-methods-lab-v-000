@@ -33,9 +33,9 @@ class Song
   end
   
   def self.find_by_name(name)
-    @@all.each do |song|
-      if song == name
-        return song
+    @@all.each_with_index do |song, index|
+      if name == song.name
+        return @@all[index]
       end
     end
   end
