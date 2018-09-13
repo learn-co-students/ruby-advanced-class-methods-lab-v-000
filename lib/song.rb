@@ -36,21 +36,16 @@ class Song
     @@all.each_with_index do |song, index|
       if name == song.name
         return @@all[index]
+      elsif name != song.name
+        return false
       end
     end
   end
 
-
-
-
   # def self.find_or_create_by_name(name)
-  #   
-  #     if song = name
-  #       return song
-  #     else
-  #       create_by_name(name)
-  #     end
-  #   end
+  #   found_song = self.find_by_name(name)
+      
+    
   # end
 
 
