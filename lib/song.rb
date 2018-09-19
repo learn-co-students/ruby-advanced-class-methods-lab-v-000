@@ -26,6 +26,7 @@ class Song
     #binding.pry
   end
 
+
   def self.find_by_name(name)
 
     if @@all.empty? == false
@@ -41,48 +42,57 @@ class Song
 
   end
 
+  def self.alphabetical
 
-  def self.find_or_create_by_name(name)
-    #binding.pry
-=begin
-    @@all.each do |song|
-      #binding.pry
-      if song.name == name
-        return self.find_by_name(name)
-      end
-    end
-    self.create_by_name(name)
-    #binding.pry
-=end
+  @@all.sort_by { |song| song.name}
 
-=begin
-    if self.find_by_name(name) == false
-      create_by_name(name)
-    end
-    self.find_by_name(name)
-=end
-  self.find_by_name(name) || self.create_by_name(name)
+  end
+
+  def self.new_from_filename(file_name)
+    whithout_mp3 = file_name.chomp(".mp3")
+    artist_name = whithout_mp3.split("-")
+
+    artist = artist_name[0].chomp(" ").strip
+    name = artist_name[1].chomp(" ").strip
+
+    ##binding.pry
+
+    song = self.new_by_name(name)
+    song.artist_name = artist
+
+    song
+  end
+
+  def self.create_from_filename(file_name)
+
+    whithout_mp3 = file_name.chomp(".mp3")
+    artist_name = whithout_mp3.split("-")
+
+    artist = artist_name[0].chomp(" ").strip
+    name = artist_name[1].chomp(" ").strip
+
+    ##binding.pry
+
+    song = self.new_by_name(name)
+    song.artist_name = artist
+
+    @@all << song
 
   end
 
 
-=begin
+  def self.destroy_all
+    @@all.clear
+  end 
+
+
   def self.find_or_create_by_name(name)
-
     #binding.pry
-
-    @@all.each do |song|
-      #binding.pry
-      if song.name == name
-        return self.find_by_name(name)
-      end
-    end
-
-    self.create_by_name(name)
-    #binding.pry
+    self.find_by_name(name) || self.create_by_name(name)
 
   end
-=end 
+
+
   def self.all
     @@all
   end
