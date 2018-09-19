@@ -37,7 +37,7 @@ class Song
       end
     end
       #binding.pry
-    false
+    nil
 
   end
 
@@ -66,7 +66,7 @@ class Song
   end
 
 
-
+=begin
   def self.find_or_create_by_name(name)
 
     #binding.pry
@@ -82,7 +82,7 @@ class Song
     #binding.pry
 
   end
-
+=end 
   def self.all
     @@all
   end
