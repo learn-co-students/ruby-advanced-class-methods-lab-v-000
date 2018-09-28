@@ -47,8 +47,10 @@ class Song
   end 
   
   def self.new_from_filename(filename)
+
      song = self.new 
     split_filename = filename.chop.chop.chop.chop.split(" - ")
+ 
     song.name = split_filename[1]
     song.artist_name = split_filename[0]
    
@@ -68,5 +70,7 @@ class Song
   def self.destroy_all
     @@all.clear
   end 
+
+    
 
 end
