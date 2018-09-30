@@ -48,7 +48,15 @@ class Song
   end 
 
   def self.new_from_filename(filename)
-    
+    data = filename.split(" - ")
+    artist_name = data[0]
+    #figure out how to chomp mp3 here 
+    name = data[1].chomp(".mp3")
+  
+    song = self.new
+    song.artist_name = artist_name
+    song.name = name
+    return song 
   end 
   
   def self.destroy_all
