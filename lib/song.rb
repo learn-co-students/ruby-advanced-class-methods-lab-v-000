@@ -3,9 +3,9 @@ class Song
   @@all = []
 
   def self.create
-    song = self.new
-    song.save
-    song
+    s = self.new
+    s.save
+    s
   end
 
   def self.new_by_name(song_string)
@@ -14,8 +14,19 @@ class Song
     s
   end
 
+  def self.create_by_name(song_string)
+    s = self.new
+    s.name = song_string
+    s.save
+    s
+  end
+
   def self.all
     @@all
+  end
+
+  def self.find_by_name(song_string)
+    self.all.detect {|i| i.name == song_string}
   end
 
   def save
