@@ -9,9 +9,9 @@ class Song
   end
 
   def self.new_by_name(song_string)
-    song = self.new
-    song.name = song_string
-    song
+    s = self.new
+    s.name = song_string
+    s
   end
 
   def self.all
