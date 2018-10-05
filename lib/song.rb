@@ -30,16 +30,17 @@ class Song
   end
 
   def self.find_or_create_by_name(find_this_song)
-    did_i_find_it = self.all.detect {|x| x.name == find_this_song}
-    if did_i_find_it == nil
-      s = self.new 
-      s.name = find_this_song
-      s.save 
-      s
-    else
-      did_i_find_it
-    end
+    find_this_song = self.find_by_name
+      if find_this_song == nil
+        self.create_by_name
+      else
+        self.find_by_name
+      end
   end
+
+  def self.alphabetical
+    self.all.sort_by { |x| x.name}
+  end 
 
   def save
     self.class.all << self
