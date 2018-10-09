@@ -51,11 +51,15 @@ class Song
 
     #initialize a song and artist_name from filename
     c = self.new
-
-# binding.pry
     c.artist_name = string_parts[0]
     c.name = string_parts[1]
     c
+  end
+
+  def self.create_from_filename
+
+
+# binding.pry
 
   end
 
