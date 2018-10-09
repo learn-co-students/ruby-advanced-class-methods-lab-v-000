@@ -49,10 +49,12 @@ class Song
     #create separate strings for song name and artist_name
     string_parts = f.split(' - ')
 
+binding.pry
+
     #initialize a song and artist_name from filename
     c = self.new
-    string_parts[1] = c.artist_name
-    string_parts[0] = c.name
+    c.name = string_parts[0]
+    c.artist_name = string_parts[1]
 
   end
 
