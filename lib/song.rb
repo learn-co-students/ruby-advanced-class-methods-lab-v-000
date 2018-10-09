@@ -38,13 +38,23 @@ class Song
       end
   end
 
-  def self.new_from_filename
-    
-  end
-
   def self.alphabetical
     self.all.sort_by { |x| x.name}
   end 
+
+  def self.new_from_filename(filename)
+    #remove .mp3 from string
+    f = filename.split(".").first
+
+    #create separate strings for song name and artist_name
+    string_parts = f.split(' - ')
+
+    #initialize a song and artist_name from filename
+    c = self.new
+    string_parts[1] = c.artist_name
+    string_parts[0] = c.name
+
+  end
 
   def save
     self.class.all << self
