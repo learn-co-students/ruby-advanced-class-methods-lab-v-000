@@ -56,11 +56,20 @@ class Song
     c
   end
 
-  def self.create_from_filename
+  def self.create_from_filename(filename)
+    #remove .mp3 from string
+    f = filename.split(".").first
 
+    #create separate strings for song name and artist_name
+    string_parts = f.split(' - ')
 
-# binding.pry
-
+    #initialize a song and artist_name from filename
+    c = self.new
+    
+    c.artist_name = string_parts[0]
+    c.name = string_parts[1]
+    c.save
+    c
   end
 
   def save
