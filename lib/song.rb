@@ -53,9 +53,9 @@ class Song
     c = self.new
 
 # binding.pry
-
-    c.name = string_parts[0]
-    c.artist_name = string_parts[1]
+    c.artist_name = string_parts[0]
+    c.name = string_parts[1]
+    c
 
   end
 
