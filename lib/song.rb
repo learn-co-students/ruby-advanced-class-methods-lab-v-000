@@ -54,25 +54,24 @@ class Song
   
   def self.new_from_filename(filename)
     song = self.new
+  # binding.pry
     song_array = filename.split(" - ")
-    
     artist_name = song_array[0]
-    song_name = song_array[1].gsub(".mp3","") 
-    
-    
+    song_name = song_array[1].gsub(".mp3", "")
+    song.name = song_name
     song.artist_name = artist_name
+    song 
     end
 
- 
-  
     def self.create_from_filename(filename)
-    parts = filename.split("-")
+    parts = filename.split(" - ")
     artist_name = parts[0]
-    song_name = parts[1].gsub(".mp3","")
+    song_name = parts[1].gsub(".mp3", "")
     song = self.create
     song.artist_name = artist_name
      
     song.name = song_name
+    song
   end
   
   
