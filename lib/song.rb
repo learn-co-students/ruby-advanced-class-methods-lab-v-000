@@ -1,3 +1,4 @@
+require 'pry'
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -16,24 +17,28 @@ class Song
     song
   end
   
-  def self.new_by_name(name)
-    song.create.name = name
+  def self.new_by_name(song_name)
+    song = self.new
+    song.name = song_name
+    song
   end
   
-  def self.create_by_name(name)
-    self.create 
-    save
+  def self.create_by_name(song_name)
+    song = self.new
+    song.name = song_name
+    song.save
+    song
   end
   
-  def self.find_by_name(name)
-    @@all.find{|name| name.name == name}
+  def self.find_by_name(song_name)
+    @@all.find{|song| song.name == song_name}
   end
   
-  def self.find_or_create_by_name(name)
-    if find_by_name(name) == true 
-      self
-    else 
-      create_by_name(name)
+  def self.find_or_create_by_name(song_name)
+    if find_by_name(song_name) == true 
+      find_by_name(song_name)
+    else
+      create_by_name(song_name)
     end
   end
   
