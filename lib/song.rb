@@ -35,7 +35,8 @@ class Song
   end
   
   def self.find_or_create_by_name(song_name)
-    if find_by_name(song_name) == true 
+    #binding.pry
+    if find_by_name(song_name)
       find_by_name(song_name)
     else
       create_by_name(song_name)
@@ -43,7 +44,7 @@ class Song
   end
   
   def self.alphabetical
-    all.name.sort
+    @@all.sort_by {|song| song.name}
   end
   
   def self.new_from_filename
