@@ -47,12 +47,14 @@ class Song
   end
   
   def self.new_from_filename(filename)
-    rows = filename.split(" - ")
+    song_data = filename.split(" - ")
+    binding.pry
     rows.each do |row|
-      song_data = row.chomp(".mp3")
+      song_data = []
+      song_data << row.chomp(".mp3")
       artist = song_data[0]
-      binding.pry
       song_name = song_data[1]
+      binding.pry
       song = Song.new
     end
   end
