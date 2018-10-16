@@ -1,6 +1,7 @@
 require 'pry'
 class Song
   attr_accessor :name, :artist_name
+  #attr_accessor give me two methods i can call on a song :  song.artist_name  and song.artist_name =
   @@all = []
   
   def self.all
@@ -48,19 +49,21 @@ class Song
   
   def self.new_from_filename(filename)
     song_data = filename.split(" - ")
-    binding.pry
-    rows.each do |row|
-      song_data = []
-      song_data << row.chomp(".mp3")
-      artist = song_data[0]
-      song_name = song_data[1]
-      binding.pry
-      song = Song.new
-    end
+    artist = song_data[0]
+    song_name = song_data[1].gsub(".mp3", "")
+    song = self.new_by_name(song_name)
+    song.artist_name = artist
+    song
   end
   
-  
   def self.create_from_filename
+    song_data = filename.split(" - ")
+    artist = song_data[0]
+    song_name = song_data[1].gsub(".mp3", "")
+    song = self.create_by_name(song_name)
+    #binding.pry
+    song.artist_name = artist
+    song
   end
   
   def self.destroy_all
