@@ -35,7 +35,6 @@ class Song
   end
   
   def self.find_or_create_by_name(song_name)
-    #binding.pry
     if find_by_name(song_name)
       find_by_name(song_name)
     else
@@ -47,9 +46,17 @@ class Song
     @@all.sort_by {|song| song.name}
   end
   
-  def self.new_from_filename
-    #(/[".mp3"\b/])
+  def self.new_from_filename(filename)
+    rows = filename.split(" - ")
+    rows.each do |row|
+      song_data = row.chomp(".mp3")
+      artist = song_data[0]
+      binding.pry
+      song_name = song_data[1]
+      song = Song.new
+    end
   end
+  
   
   def self.create_from_filename
   end
