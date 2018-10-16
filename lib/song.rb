@@ -54,6 +54,21 @@ class Song
     end
   end
   
+  def self.new_from_filename(filename)
+    parsedSong = filename.split(/\s[-]\s|.mp3/)
+    @song = self.new
+    @song.name = parsedSong[1]
+    @song.artist_name = parsedSong[0]
+    @song
+  end
+  
+  def self.create_from_filename(filename)
+    @@all << new_from_filename(filename)
+  end
+  
+  def self.destroy_all
+    @@all.clear
+  end
   
   
 end
