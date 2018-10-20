@@ -10,65 +10,64 @@ class Song
   def save
     self.class.all << self
   end
-  
-  #Class method here.  Instead of initialize, we are adding this to our class
-  #functionality.
-  #To Define this method we enact the following
-  # the local var song is = Song.new, which is creating a new song
-  # the song is then saved by song.save?? and then returns the song
-  def self.create
-    song = Song.new
-    song.save
-    song
-end
 
-def self.new_by_name(song_name)
-  song = self.new 
-  song.name = song_name
+def self.create
+  song = Song.new
+  @@all << song
   song
 end
 
-def self.create_by_name(create_song_name)
-  song = self.create
-  song.name = create_song_name
+def self.new_by_name(name)
+  song = Song.new
+  song.name = name
   song
 end
 
-def self.find_by_name(song_name)
-  self.all.detect { |s| s.name == song_name }
+def self.create_by_name(name)
+  song = Song.new
+  song.name = name
+  @@all << song
+  song
 end
 
-def self.find_or_create_by_name(song_name)
-  self.find_by_name(song_name) || self.create_by_name(song_name)
+def self.find_by_name(name)
+  @@all.find do |song|
+    song.name == name
+  end
+end
+
+def self.find_or_create_by_name(name)
+  find_by_name(name) || create_by_name(name)
 end
 
 def self.alphabetical
-  self.all.sort_by {|s| s.name}
+  @@all.sort_by { |song| song.name}
 end
 
 def self.new_from_filename(filename)
-    parts = filename.split(" - ")
-    artist_name = parts[0]
-    song_name = parts[1].gsub(".mp3", "")
+  file_name = filename.split(" - ")
+    artist_name = file_name[0]
+    song_name = file_name[1].gsub(".mp3", "")
 
     song = self.new
-    song.name = song_name
     song.artist_name = artist_name
+    song.name = song_name
     song
-  end
+end
 
-  def self.create_from_filename(filename)
-    parts = filename.split(" - ")
-    artist_name = parts[0]
-    song_name = parts[1].gsub(".mp3", "")
+def self.create_from_filename(filename)
+  file_name = filename.split(" - ")
+    artist_name = file_name[0]
+    song_name = file_name[1].gsub(".mp3", "")
 
     song = self.create
-    song.name = song_name
     song.artist_name = artist_name
+    song.name = song_name
     song
-  end
+end
 
-  def self.destroy_all
-    self.all.clear
-  end
+def self.destroy_all
+  @@all.clear
+end
+  
 end
