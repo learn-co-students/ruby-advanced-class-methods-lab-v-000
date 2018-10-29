@@ -18,7 +18,6 @@ class Song
     song = Song.new
     song.save
     song
- #   binding.pry
   end
   
   def self.new_by_name(name)
@@ -48,8 +47,7 @@ class Song
   end
    
   def self.new_from_filename(filename)
-   #binding.pry
-   @song = Song.new
+    @song = Song.new
     song_info=filename.split(' - ')
     @song.artist_name=song_info[0]
     @song.name=song_info[1].chomp(".mp3")
@@ -62,9 +60,6 @@ class Song
     @song.artist_name=song_info[0]
     @song.name=song_info[1].chomp(".mp3")
     @song.save
-    @song
-  
-  
     @song
   end
   
