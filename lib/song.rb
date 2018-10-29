@@ -57,11 +57,14 @@ class Song
   end
   
   def self.create_from_filename(filename)
-  #  binding.pry
-    Song.new_from_filename(filename)
-   # binding.pry
-    Song.create_by_name(@song.name)
-  #  binding.pry
+    @song = Song.new
+    song_info=filename.split(' - ')
+    @song.artist_name=song_info[0]
+    @song.name=song_info[1].chomp(".mp3")
+    @song.save
+    @song
+  
+  
     @song
   end
   
