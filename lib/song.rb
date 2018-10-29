@@ -28,10 +28,10 @@ class Song
   end
  
   def self.create_by_name(name)
-    song=Song.new
-    song.name = name
-    song.save
-    song
+    @song=Song.new
+    @song.name = name
+    @song.save
+    @song
   end
   # binding.pry
   
@@ -48,17 +48,21 @@ class Song
   end
    
   def self.new_from_filename(filename)
-    song = Song.new
+   #binding.pry
+   @song = Song.new
     song_info=filename.split(' - ')
-    song.artist_name=song_info[0]
-    song.name=song_info[1].chomp(".mp3")
-    song
+    @song.artist_name=song_info[0]
+    @song.name=song_info[1].chomp(".mp3")
+    @song
   end
   
   def self.create_from_filename(filename)
-    song.new_from_filename(filename)
-    song.create_by_name(filename)
-    song
+  #  binding.pry
+    Song.new_from_filename(filename)
+   # binding.pry
+    Song.create_by_name(@song.name)
+  #  binding.pry
+    @song
   end
   
   def self.destroy_all
