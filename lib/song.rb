@@ -34,5 +34,21 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-
+    
+    if 
+      find_by_name(name) != nil 
+      find_by_name(name)
+    else
+      create_by_name(name)
+    end
+  end
+  
+  def self.alphabetical
+    self.all.sort_by{|song| song.name}.uniq
+  end
+  
+  def self.new_from_filename(file_name)
+    
+  end
+  
 end
