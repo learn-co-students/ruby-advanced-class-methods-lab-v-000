@@ -1,9 +1,10 @@
 class Song
+
   attr_accessor :name, :artist_name
   @@all = []
 
-  def initialize
-    @name = name
+  def name
+    @name
   end
 
   def self.all
@@ -20,6 +21,7 @@ class Song
   def self.create
     song = self.new
     self.all << song
+    song
   end
 
 # takes in string name of song
@@ -28,7 +30,6 @@ class Song
 def self.new_by_name(name)
   song = self.new
   song.name = name
-  self.all << song
   song
 end
 
@@ -36,7 +37,10 @@ end
 # returns song instance with that name as name property
 # song is saved into the @@all class variable.
 def self.create_by_name(name)
-  self.create.name = name
+  song = self.new
+	song.name = name
+	self.all << song
+	song
 end
 
 # Class finder
@@ -47,15 +51,19 @@ end
 # song_2 = Song.create_by_name("Hello")
 # song_3 = Song.create_by_name("Hotline Bling")
   def self.find_by_name(name)
-      self.all.find{|song| song.name == name}
-  end
+		self.all.find {|song| song.name == name}
+	end
 
 # prevent creation of duplicate songs
 # accept string name for song
 # return either matching song instance with that name
 # or create new song with the name and return song instance.
   def self.find_or_create_by_name(name)
-
+    if self.all.include?(name)
+        self.find_by_name(name)
+    else
+       self.create_by_name(name)
+    end
   end
 
 # class method returns all songs
