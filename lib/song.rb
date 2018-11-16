@@ -41,6 +41,10 @@ end
 # Class finder
 # accepts string name of song
 # returns matching instance of song with that name
+# Song.find_by_name("Just The Way You Are")).to be_falsey
+# song_1 = Song.create_by_name("Blank Space")
+# song_2 = Song.create_by_name("Hello")
+# song_3 = Song.create_by_name("Hotline Bling")
   def self.find_by_name(name)
       self.all.find{|song| song.name == name}
   end
@@ -84,3 +88,8 @@ Song.create_from_filename("Thundercat - For Love I Come.mp3")
 Song.create_by_name("Blank Space")
 Song.create_by_name("Hello")
 Song.create_by_name("Hotline Bling")
+Song.create_by_name("Thriller")
+Song.create_by_name("Blank Space")
+Song.create_by_name("Call Me Maybe")
+Song.find_or_create_by_name("Sometimes")
+Song.find_or_create_by_name("Sometimes")
