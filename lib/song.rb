@@ -59,13 +59,8 @@ end
 # return either matching song instance with that name
 # or create new song with the name and return song instance.
   def self.find_or_create_by_name(name)
-    if self.all.include?(name)
-        self.find_by_name(name)
-    else
-       self.create_by_name(name)
-    end
+    self.find_by_name(name) || self.create_by_name(name)
   end
-
 # class method returns all songs
 # in ascending (a-z) alphabetical order.
 # Use Array#sort_by.
