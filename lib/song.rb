@@ -4,8 +4,7 @@ class Song
 
   def initialize(name)
       @name = name
-      self.class.all << self
-    end
+  end
 
   def self.all
     @@all
@@ -18,24 +17,25 @@ class Song
 #Song.create
 # initializes song & saves it to @@all
 # either literally or via Song.all class method
-
   def self.create
-# song = Song.create
-# Song.all.include?(song)
+    song = self.new
+    self.all << song
   end
 
 # takes in string name of song
 # returns a song instance with that name as its name property
 # returns instance of Song, NOT a simple string or anything else.
-def self.new_by_name
-
+def self.new_by_name(name)
+  song = self.new
+  song.name = name
+  self.all << song
 end
 
 # takes in string name of song
 # returns song instance with that name as name property
 # song is saved into the @@all class variable.
-def self.create_by_name
-
+def self.create_by_name(name)
+  name = self.create.name
 end
 
 # Class finder
@@ -53,7 +53,7 @@ end
 # accept string name for song
 # return either matching song instance with that name
 # or create new song with the name and return song instance.
-  def self.find_or_create_by_name
+  def self.find_or_create_by_name(name)
 
   end
 
@@ -61,27 +61,27 @@ end
 # in ascending (a-z) alphabetical order.
 # Use Array#sort_by.
   def self.alphabetical
-
+    self.all.sort_by {|song| song.name)
   end
 # return a new Song instance with song name & artist_name set e.g.:
 # Song.new_from_filename("Taylor Swift - Blank Space.mp3")
 # song.name #=> "Blank Space"
 # song.artist_name #=> "Taylor Swift"
-    def self.new_from_filename
+    def self.new_from_filename(filename)
 
     end
 
 # accepts filename in format
 # "Taylor Swift - Blank Space.mp3"
 # parse filename correctly & save Song instance
-    def self.create_from_filename
-
+  def self.create_from_filename(filename)
+    filename.split("- ")
     end
 
 # class method reset state of @@all
 # to empty array, deleting all previous song instances.
     def self.destroy_all
-
+    end
 # class end below
 end
 Song.create_from_filename("Thundercat - For Love I Come.mp3")
