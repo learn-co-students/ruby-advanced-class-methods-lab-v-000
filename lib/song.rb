@@ -2,8 +2,8 @@ class Song
   attr_accessor :name, :artist_name
   @@all = []
 
-  def initialize(name)
-      @name = name
+  def initialize
+    @name = name
   end
 
   def self.all
@@ -29,13 +29,14 @@ def self.new_by_name(name)
   song = self.new
   song.name = name
   self.all << song
+  song
 end
 
 # takes in string name of song
 # returns song instance with that name as name property
 # song is saved into the @@all class variable.
 def self.create_by_name(name)
-  name = self.create.name
+  self.create.name = name
 end
 
 # Class finder
@@ -61,7 +62,7 @@ end
 # in ascending (a-z) alphabetical order.
 # Use Array#sort_by.
   def self.alphabetical
-    self.all.sort_by {|song| song.name)
+    self.all.sort_by {|song| song.name}
   end
 # return a new Song instance with song name & artist_name set e.g.:
 # Song.new_from_filename("Taylor Swift - Blank Space.mp3")
@@ -81,6 +82,7 @@ end
 # class method reset state of @@all
 # to empty array, deleting all previous song instances.
     def self.destroy_all
+      self.all.clear
     end
 # class end below
 end
