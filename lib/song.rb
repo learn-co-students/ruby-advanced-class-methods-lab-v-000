@@ -7,6 +7,10 @@ class Song
     @name
   end
 
+	def artist_name
+		@artist_name
+	end
+
   def self.all
     @@all
   end
@@ -15,6 +19,10 @@ class Song
     self.class.all << self
   end
 
+# **** 
+# can I use this save method with the create_by_name
+#  type methods below? what does self.class.all really do?
+# ****
 #Song.create
 # initializes song & saves it to @@all
 # either literally or via Song.all class method
@@ -61,6 +69,7 @@ end
   def self.find_or_create_by_name(name)
     self.find_by_name(name) || self.create_by_name(name)
   end
+
 # class method returns all songs
 # in ascending (a-z) alphabetical order.
 # Use Array#sort_by.
@@ -72,16 +81,26 @@ end
 # song.name #=> "Blank Space"
 # song.artist_name #=> "Taylor Swift"
     def self.new_from_filename(filename)
-
-    end
+		#split filename arg into artist_name & name
+		# split returns new array named s, 
+		# s[0] is artist, s[1] is song name
+			s = filename.split(/ - |.mp3/)
+			#p s # output s array to check correct format
+			song = self.new
+		  song.name = s[1]
+			song.artist_name = s[0]
+			song
+	    end
 
 # accepts filename in format
 # "Taylor Swift - Blank Space.mp3"
 # parse filename correctly & save Song instance
-  def self.create_from_filename(filename)
-    filename.split("- ")
-    end
-
+# self.create_from_filename 
+	def self.create_from_filename(filename)
+		song = self.new_from_filename(filename)
+		p @@all
+		self.all << song
+	end
 # class method reset state of @@all
 # to empty array, deleting all previous song instances.
     def self.destroy_all
