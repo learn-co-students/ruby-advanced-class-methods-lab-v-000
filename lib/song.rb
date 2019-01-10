@@ -1,7 +1,7 @@
 require 'pry'
 
 class Song
-  attr_accessor :name, :artist_name, :filename
+  attr_accessor :name, :artist_name
   @@all = []
 
   def self.all
@@ -15,20 +15,20 @@ class Song
   def self.create
     new_song = self.new
     @@all << new_song
-    return new_song
+    new_song
   end
 
   def self.new_by_name(name)
     song = self.new
     song.name = name
-    return song
+    song
   end
 
   def self.create_by_name(name)
     song = self.new
     song.name = name
     @@all << song
-    return song
+    song
   end
 
   def self.find_by_name(name)
@@ -36,11 +36,7 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    if self.find_by_name(name) == nil
-      self.create_by_name(name)
-    else
-      self.find_by_name(name)
-    end
+    self.find_by_name(name) || self.create_by_name(name)
   end
 
   def self.alphabetical
