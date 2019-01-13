@@ -11,20 +11,75 @@
 This lab has provided you with a base `Song` class that provides the following definition:
 
 ```ruby
-class Song
-  attr_accessor :name, :artist_name
-  @@all = []
+require "pry"
 
-  def self.all
-    @@all
+ class Song	class Song
+  attr_accessor :name, :artist_name	  attr_accessor :name, :artist_name
+  @@all = []	  @@all = []
+@@ -9,5 +11,62 @@ def self.all
+  def save	  def save
+    self.class.all << self	    self.class.all << self
+  end	  end
+
+   def self.create
+    song = self.new
+    song.save
+    song
   end
 
-  def save
-    self.class.all << self
+   def self.new_by_name(name)
+    song = self.new
+    song.name = name
+    song
   end
+
+   def self.create_by_name(name)
+    song = self.new
+    song.name = name
+   song.save
+   song
+  end
+
+   def self.find_by_name(name)
+    @@all.find {|song| song.name == name}
+  end
+
+   def self.find_or_create_by_name(name)
+
+
+       self.find_by_name(name) || self.create_by_name(name)
+
+   end
+
+   def self.alphabetical
+    @@all.sort_by {|song| song.name}
+  end
+
+   def self.new_from_filename(filename)
+     song = self.new
+    split_filename = filename.chop.chop.chop.chop.split(" - ")
+    song.name = split_filename[1]
+    song.artist_name = split_filename[0]
+
+     song
+  end
+
+   def self.create_from_filename(filename)
+    song = self.new
+    split_filename = filename.chop.chop.chop.chop.split(" - ")
+    song.name = split_filename[1]
+    song.artist_name = split_filename[0]
+    song.save
+
+     song
+  end
+
+   def self.destroy_all
+    @@all.clear
+  end
+
 
 end
-
 ```
 
 The `Song` class provides a class variable `@@all` to store all instances for `Song` that are created through the instance method `Song#save`. Additionally, `Song` instances have basic properties of a name and an artist name.
