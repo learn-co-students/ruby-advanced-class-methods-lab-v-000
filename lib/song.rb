@@ -16,12 +16,9 @@ class Song
     c
   end
 
-  def self.new_by_name(name) # example Song.new_by_name('Hello')
-    # we set song to an instance of the song class
+  def self.new_by_name(name)
     song = self.new
-    # we use the writer/setter method name for the song insance to set it to the argument name
     song.name = name
-    # we return the song instance
     song
   end
 
