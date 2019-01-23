@@ -33,7 +33,17 @@ class Song
   end
 
   def self.find_by_name(name)
-
+    result = nil # <---Flag / Switch - maintaining state
+  #  self.all.each do |n|
+  #     if n.name == name
+  #      result = n
+  #     end
+  #   end
+#\/ refactored version
+  self.all.each do |n|
+    result = n if n.name == name
+  end
+    result
   end
 
 end #<-----Song class end
