@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'pry'
 
-puts describe "Song Class Methods" do
+ describe "Song Class Methods" do
   describe '.create' do
     it 'instantiates and saves the song, and it returns the new song that was created' do
       song = Song.create
@@ -10,7 +10,7 @@ puts describe "Song Class Methods" do
     end
   end
 
-  puts describe '.new_by_name' do
+   describe '.new_by_name' do
     it 'instantiates a song with a name property' do
       song = Song.new_by_name("Blank Space")
 
@@ -18,7 +18,7 @@ puts describe "Song Class Methods" do
     end
   end
 
-  puts describe '.create_by_name' do
+  describe '.create_by_name' do
     it 'instantiates and saves a song with a name property' do
       song = Song.create_by_name("Blank Space")
 
@@ -27,7 +27,7 @@ puts describe "Song Class Methods" do
     end
   end
 
-  puts describe '.find_by_name' do
+   describe '.find_by_name' do
     it 'can find a song present in @@all by name' do
       song_1 = Song.create_by_name("Blank Space")
       song_2 = Song.create_by_name("Hello")
@@ -37,7 +37,7 @@ puts describe "Song Class Methods" do
     end
   end
 
-  puts describe '.find_or_create_by_name' do
+   describe '.find_or_create_by_name' do
     it 'invokes .find_by_name and .create_by_name instead of repeating code' do
       expect(Song).to receive(:find_by_name).at_least(1).times
       expect(Song).to receive(:create_by_name).at_least(1).times
