@@ -35,6 +35,14 @@ class Song
    s.artist_name = array[0].strip
    s
  end
+ def self.create_from_filename(string_name)
+   array = string_name.split("-")
+   song_name = array[1].chomp(".mp3").strip
+   s = self.new_by_name(song_name)
+   s.artist_name = array[0].strip
+   s.save
+   s
+ end
 def self.destroy_all
   @@all.clear
 end
