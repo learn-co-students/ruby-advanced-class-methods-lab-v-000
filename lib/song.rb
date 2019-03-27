@@ -30,6 +30,16 @@ class Song
     song.save
     song
   end
+
+  def self.find_by_name(name)
+    self.all.each do |n|
+      if n == name
+      #if !!name
+        self
+      else false
+      end
+    end
+  end
   # def self.create(name)
   #   person = self.new
   #   person.name = name
