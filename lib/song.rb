@@ -20,9 +20,16 @@ class Song
   def self.new_by_name(name)
     song = self.new
     song.name = name
-    #self.all << name
+    song
   end
 
+  def self.create_by_name(name)
+    song = self.new
+    song.name = name
+    self.all << song
+    song.save
+    song
+  end
   # def self.create(name)
   #   person = self.new
   #   person.name = name
