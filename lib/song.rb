@@ -43,9 +43,8 @@ class Song
     end
   end
 
-  def self.alphabetical(name)
-    #self.all.sort_by{|song| song.name }
-    self.find_by_name(name).sort
+  def self.alphabetical
+    self.all.uniq.sort_by{|song| song.name  }
   end
   # def self.create(name)
   #   person = self.new
