@@ -44,7 +44,11 @@ class Song
   end
 
   def self.alphabetical
-    self.all.uniq.sort_by{|song| song.name  }
+    self.all.uniq.sort_by{|song| song.name }
+  end
+
+  def self.new_from_filename
+
   end
   # def self.create(name)
   #   person = self.new
