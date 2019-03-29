@@ -48,21 +48,22 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    filename.chomp(".mp3")
+    #filename.chomp(".mp3")
     data = filename.split(" - ")
     artist_name = data[0]
-    name  = data[1]
+    name = data[1].chomp(".mp3")
     song = self.new
     song.artist_name = artist_name
     song.name = name
     song.save
+    song
   end
 
+# "Taylor Swift - Blank Space.mp3"
 #   csv_data = "Elon Musk, 45, Tesla
 # Mark Zuckerberg, 32, Facebook
 # Martha Stewart, 74, MSL"
 #
-# "Taylor Swift - Blank Space.mp3"
 #
 # rows = csv_data.split("\n")
 # people = rows.collect do |row|
