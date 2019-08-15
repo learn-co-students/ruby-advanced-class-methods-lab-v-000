@@ -1,3 +1,8 @@
+---
+name: "Standard Issue Template"
+about: "Provide reference for intermittent issue 25 documentation"
+---
+
 Thanks for opening an issue.
 
 If you are unable to pass your tests because of example data from other tests
