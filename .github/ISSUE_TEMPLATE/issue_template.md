@@ -1,6 +1,6 @@
 ---
-name: "Standard Issue Template"
-about: "Provide reference for intermittent issue 25 documentation"
+name: "Songs seem to leak from one test to another"
+about: "If you're seeing Song instance appear in weird places, open this kind of issue."
 ---
 
 Thanks for opening an issue.
