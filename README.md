@@ -31,8 +31,8 @@ The `Song` class provides a class variable `@@all` to store all instances for
 `Song` that are created through the instance method `Song#save`. Additionally,
 `Song` instances have basic properties of a name and an artist name.
 
-> **Typographical Convention**: A typographical convention is methods you
-> invoke on instances are noted with a `#method_name` and methods you invoke on
+> **Typographical Convention**: Methods we
+> invoke on instances are noted with a `#method_name` and methods we invoke on
 > classes are noted with a `.` So `Math.sin` would refer to the **class
 > method** `sin` (divide opposite over adjacent from Trigonometry), `Song#save`
 > refers to the **instance method** `save` that is invoked on an instance of
