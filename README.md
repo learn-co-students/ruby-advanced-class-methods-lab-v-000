@@ -31,6 +31,19 @@ The `Song` class provides a class variable `@@all` to store all instances for
 `Song` that are created through the instance method `Song#save`. Additionally,
 `Song` instances have basic properties of a name and an artist name.
 
+> **Typographical Convention**: A typographical convention is methods you
+> invoke on instances are noted with a `#method_name` and methods you invoke on
+> classes are noted with a `.` So `Math.sin` would refer to the **class
+> method** `sin` (divide opposite over adjacent from Trigonometry), `Song#save`
+> refers to the **instance method** `save` that is invoked on an instance of
+> `Song`:
+> ```ruby
+> s = Song.new
+> s.name = "The Ship Song"
+> s.artist_name = "Nick Cave"
+> s.save
+> ```
+
 You have to build class methods that interact on the class data of `@@all` and
 provide the rest of our program with a semantic API on the `Song` class with
 methods such as `Song.find_or_create_by_name("Blank Space")`.
