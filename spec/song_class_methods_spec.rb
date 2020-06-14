@@ -13,7 +13,7 @@ describe "Song Class Methods" do
   describe '.new_by_name' do
     it 'instantiates a song with a name property' do
       song = Song.new_by_name("Blank Space")
-
+        
       expect(song.name).to eq("Blank Space")
     end
   end
@@ -59,7 +59,7 @@ describe "Song Class Methods" do
     it 'creates a new Song object with the provided title if one doesn\'t already exist' do
       blank_space = Song.find_by_name("Blank Space")
       expect(blank_space).to be(nil)
-
+      
       blank_space = Song.find_or_create_by_name("Blank Space")
       expect(blank_space.name).to eq("Blank Space")
     end
@@ -70,7 +70,7 @@ describe "Song Class Methods" do
       song_1 = Song.create_by_name("Thriller")
       song_2 = Song.create_by_name("Blank Space")
       song_3 = Song.create_by_name("Call Me Maybe")
-
+      
       expect(Song.alphabetical).to eq([song_2, song_3, song_1])
     end
   end
