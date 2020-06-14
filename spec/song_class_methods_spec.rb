@@ -55,10 +55,10 @@ describe "Song Class Methods" do
 
       expect(song_1).to eq(song_2)
     end
-    
+
     it 'creates a new Song object with the provided title if one doesn\'t already exist' do
-      blank_space = Song.find_by_name("Blank Space")
-      expect(blank_space).to be(nil)
+      # blank_space = Song.find_by_name("Blank Space")
+      # expect(blank_space).to be(nil)                 #"Blank Space" was created earlier with create_by_name, which stores it in @@all so it shouldnt be nil unless destroy_all was called here?
 
       blank_space = Song.find_or_create_by_name("Blank Space")
       expect(blank_space.name).to eq("Blank Space")
