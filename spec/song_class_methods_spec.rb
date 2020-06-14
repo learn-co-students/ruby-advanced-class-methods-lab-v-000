@@ -9,7 +9,7 @@ describe "Song Class Methods" do
       expect(Song.all).to include(song)
     end
   end
-
+find
   describe '.new_by_name' do
     it 'instantiates a song with a name property' do
       song = Song.new_by_name("Blank Space")
