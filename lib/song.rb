@@ -10,4 +10,67 @@ class Song
     self.class.all << self
   end
 
+  def self.create
+    song = self.new
+    song.save
+    song
+  end
+
+  def self.new_by_name(name)
+    song = Song.new
+    song.name = name
+    song
+  end
+
+  def self.create_by_name(name)
+    song = self.new
+    song.name = name
+    song.save
+    song
+  end
+
+  def self.find_by_name(name)
+    @@all.detect{|song| song.name == name}
+  end
+
+  def self.find_or_create_by_name(name)
+    if self.find_by_name(name)
+      song = self.find_by_name(name)
+      song
+    else
+      self.create_by_name(name)
+    end
+  end
+
+  def self.alphabetical
+    @@all.sort_by{|song| song.name}
+  end
+
+  def self.new_from_filename(file)
+    # file is equal to "artist - song.mp3"
+    song = Song.new
+
+    array = file.split(" - ")
+    # [artist, song_name.mp3]
+    song_name = array[1].chomp(".mp3")
+    #song_name is set to song_name
+    song.artist_name = array[0]
+    song.name = song_name
+    song
+  end
+  # Song.new_from_filename("artist_name - song_name.mp3")
+  # returns to us a Song with an artist and a name
+
+  def self.create_from_filename(file)
+    # new means unsaved, create means saved
+    song = self.new_from_filename(file)
+
+    song.save
+    song
+  end
+
+  def self.destroy_all
+    @@all.clear
+  end
+
 end
