@@ -1,0 +1,10 @@
+
+[1mFrom:[0m /home/nitrous/code/labs/ruby-advanced-class-methods-lab-v-000/lib/song.rb @ line 18 Song.create:
+
+    [1;34m15[0m: [32mdef[0m [1;36mself[0m.[1;34mcreate[0m
+    [1;34m16[0m:   song = [1;34;4mSong[0m.new
+    [1;34m17[0m:   [1;36mself[0m.all << song
+ => [1;34m18[0m:   binding.pry
+    [1;34m19[0m:   song
+    [1;34m20[0m: [32mend[0m
+
