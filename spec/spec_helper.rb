@@ -6,11 +6,7 @@ RSpec.configure do |config|
     ["Song"].each do |class_name|
       if Kernel.const_defined?(class_name)
         klass = Kernel.const_get(class_name)
-        if klass.respond_to?(:destroy_all)
-          klass.destroy_all
-        else
-          klass.class_variable_set(:@@all, [])
-        end
+        klass.class_variable_set(:@@all, [])
       end
     end
   end
