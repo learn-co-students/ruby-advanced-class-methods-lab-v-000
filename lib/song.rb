@@ -1,3 +1,4 @@
+require 'pry'
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -10,4 +11,57 @@ class Song
     self.class.all << self
   end
 
+  def self.create
+    song = Song.new
+    song.save
+    song
+  end
+
+    def self.new_by_name(song_name)
+      song = self.new
+      song.name = song_name
+      song
+    end
+
+    def self.create_by_name(song_name)
+    song = self.create
+    song.name = song_name
+    song
+    end
+
+    def self.find_by_name(song_name)
+      self.all.detect {|x| x.name == song_name}
+    end
+
+    def self.find_or_create_by_name(song_name)
+    self.find_by_name(song_name) || self.create_by_name(song_name)
+    end
+
+    def self.alphabetical
+      a = []
+      self.all.each {|x| a << x.name}
+      b = []
+       a.sort.each {|y| b << self.find_by_name(y)}
+       b
+    end
+
+    def self.new_from_filename(filename)
+      a = filename.split(/....\z| - /)
+      artist_name = a[0]
+      song_name = a[1]
+      song = self.new
+      song.name = song_name
+      song.artist_name = artist_name
+      song
+    end
+
+    def self.create_from_filename(filename)
+      song = self.new_from_filename(filename)
+      song.save
+      song
+    end
+
+    def self.destroy_all
+      @@all.clear 
+    end
 end
